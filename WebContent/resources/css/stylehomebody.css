@@ -1,0 +1,28 @@
+.container
+{
+    background-image:url("images/HATCHED CHICKENS small.jpg");
+    background-repeat:no-repeat;
+    width: 350;
+    height: 750px;
+   
+    padding-right:20px;   
+    margin-left:70px;
+    margin-top:10px;
+}
+
+.home-main-data
+{
+    display: flex;
+}
+
+.main-data-left
+{
+    width: 60%;
+    padding: 5px;
+}
+
+.main-data-right
+{
+    width: 40%;
+    padding: 5px;
+}

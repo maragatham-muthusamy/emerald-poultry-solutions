@@ -1,0 +1,37 @@
+*
+{
+    padding: 0;
+    margin: 0;
+    box-sizing:border-box;
+    font-family: sans-serif;
+}
+
+.container1 h2
+{
+    color:rgb(16, 61, 28);
+    font-size:32px;
+    padding:50px;
+    text-align: center;
+}
+
+
+.image-cell
+{
+   padding: 10px;
+}
+.popup
+{
+    width: 400px;
+    background:fff;
+    border-radius: 6px;
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    text-align:center;
+    padding: 0 30px 30px;
+    color:#333;
+    
+    ;
+
+}
