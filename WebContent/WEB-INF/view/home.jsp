@@ -20,12 +20,12 @@
 
                 <div class="delivered">
                   <div class="delivered-imgs">
-                    <img src="${pageContext.request.contextPath}/resources/images/customers/customer-1.jpg" alt="Customer photo" />
-                    <img src="${pageContext.request.contextPath}/resources/images/customers/customer-2.jpg" alt="Customer photo" />
-                    <img src="${pageContext.request.contextPath}/resources/images/customers/customer-3.jpg" alt="Customer photo" />
-                    <img src="${pageContext.request.contextPath}/resources/images/customers/customer-4.jpg" alt="Customer photo" />
-                    <img src="${pageContext.request.contextPath}/resources/images/customers/customer-5.jpg" alt="Customer photo" />
-                    <img src="${pageContext.request.contextPath}/resources/images/customers/customer-6.jpg" alt="Customer photo" />
+                    <img src="${pageContext.request.contextPath}/resources/images/users/user-1.jpg" alt="User photo" />
+                    <img src="${pageContext.request.contextPath}/resources/images/users/user-2.jpg" alt="Userphoto" />
+                    <img src="${pageContext.request.contextPath}/resources/images/users/user-3.jpg" alt="User photo" />
+                    <img src="${pageContext.request.contextPath}/resources/images/users/user-4.jpg" alt="User photo" />
+                    <img src="${pageContext.request.contextPath}/resources/images/users/user-5.jpg" alt="User photo" />
+                    <img src="${pageContext.request.contextPath}/resources/images/users/user-6.jpg" alt="User photo" />
                   </div>
                   <p class="delivered-text">
                     <span>250,000+</span> delivered last year!

@@ -9,74 +9,68 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.maha.spring.entity.Customer;
+import com.maha.spring.entity.Users;
 
 @Repository
-public class CustomerDAOImpl implements CustomerDAO {
+public class UsersDAOImpl implements UsersDAO {
 
 	// need to inject the session factory
 	@Autowired
 	private SessionFactory sessionFactory;
 			
 	@Override
-	public List<Customer> getCustomers() {
+	public List<Users> getUser() {
 		
 		// get the current hibernate session
 		Session currentSession = sessionFactory.getCurrentSession();
 				
 		// create a query  ... sort by last name
-		Query<Customer> theQuery = 
-				currentSession.createQuery("from Customer order by lastName",
-											Customer.class);
+		Query<Users> theQuery = 
+				currentSession.createQuery("from Users order by lastName",
+											Users.class);
 		
 		// execute query and get result list
-		List<Customer> customers = theQuery.getResultList();
+		List<Users> users = theQuery.getResultList();
 				
 		// return the results		
-		return customers;
+		return users;
 	}
 
 	@Override
-	public void saveCustomer(Customer theCustomer) {
+	public void saveUser(Users theUser) {
 
 		// get current hibernate session
 		Session currentSession = sessionFactory.getCurrentSession();
 		
-		// save/upate the customer ... finally LOL
-		currentSession.saveOrUpdate(theCustomer);
+		// save/update the user ... finally LOL
+		currentSession.saveOrUpdate(theUser);
 		
 	}
 
 	@Override
-	public Customer getCustomer(int theId) {
+	public Users getUser(int theId) {
 
 		// get the current hibernate session
 		Session currentSession = sessionFactory.getCurrentSession();
 		
 		// now retrieve/read from database using the primary key
-		Customer theCustomer = currentSession.get(Customer.class, theId);
+		Users theUser = currentSession.get(Users.class, theId);
 		
-		return theCustomer;
+		return theUser;
 	}
 
 	@Override
-	public void deleteCustomer(int theId) {
+	public void deleteUser(int theId) {
 
 		// get the current hibernate session
 		Session currentSession = sessionFactory.getCurrentSession();
 		
 		// delete object with primary key
 		Query theQuery = 
-				currentSession.createQuery("delete from Customer where id=:customerId");
-		theQuery.setParameter("customerId", theId);
+				currentSession.createQuery("delete from User where id=:userId");
+		theQuery.setParameter("userId", theId);
 		
-		theQuery.executeUpdate();		
+		theQuery.executeUpdate();
 	}
-
 }
-
-
-
-
-
 

@@ -4,7 +4,7 @@
 <html>
 
 <head>
-	<title>Save Customer</title>
+	<title>Save User</title>
 
 	<link type="text/css"
 		  rel="stylesheet"
@@ -12,7 +12,7 @@
 
 	<link type="text/css"
 		  rel="stylesheet"
-		  href="${pageContext.request.contextPath}/resources/css/add-customer-style.css">
+		  href="${pageContext.request.contextPath}/resources/css/add-user-style.css">
 </head>
 
 <body>
@@ -24,11 +24,11 @@
 	</div>
 
 	<div id="container">
-		<h3>Save Customer</h3>
+		<h3>Save User</h3>
 	
-		<form:form action="saveCustomer" modelAttribute="customer" method="POST">
+		<form:form action="saveUser" modelAttribute="user" method="POST">
 
-			<!-- need to associate this data with customer id -->
+			<!-- need to associate this data with user id -->
 			<form:hidden path="id" />
 					
 			<table>
@@ -63,7 +63,7 @@
 		<div style="clear; both;"></div>
 		
 		<p>
-			<a href="${pageContext.request.contextPath}/customer/list">Back to List</a>
+			<a href="${pageContext.request.contextPath}/user/list">Back to List</a>
 		</p>
 	
 	</div>
