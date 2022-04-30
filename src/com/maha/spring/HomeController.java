@@ -1,7 +1,5 @@
 package com.maha.spring;
 
-import java.util.Locale;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.maha.spring.entity.Users;
 import com.maha.spring.service.UsersService;
-import com.maha.spring.service.UsersServiceImpl;
 
 /**
  * Handles requests for the application home page.
@@ -26,12 +23,6 @@ public class HomeController {
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
-	
-	
-	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public String loginPage(Locale locale, Model model) {
-		return "login";
-	}
 	
 	@RequestMapping(value = "/home", method = RequestMethod.POST)
 	public String home(@Validated User user, Model model) {
@@ -52,6 +43,8 @@ public class HomeController {
 		oneuser.setFirstName(userform.getFirstName());
 		oneuser.setLastName(userform.getLastName());
 		oneuser.setEmail(userform.getEmail());
+		oneuser.setPhone(userform.getPhone());
+		oneuser.setUsername(userform.getUsername());
 		oneuser.setPassword(userform.getPassword());
 
 		userService.saveUser(oneuser);

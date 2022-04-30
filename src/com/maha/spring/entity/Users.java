@@ -22,12 +22,18 @@ public class Users {
 	@Column(name="lastname")
 	private String lastName;
 	
+	@Column(name="phone")
+	private String phone;
+	
 	@Column(name="email")
 	private String email;
 	
+	@Column(name="username")
+	private String userName;
+	
 	@Column(name="password")
 	private String password;
-	
+
 	public Users() {
 
 	}
@@ -72,14 +78,24 @@ public class Users {
 		this.password = password;
 	}
 
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	public String getUsername() {
+		return userName;
+	}
+
+	public void setUsername(String userName) {
+		this.userName = userName;
+	}
+
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + "]";
+		return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + "phone" + phone + "]";
 	}
-		
 }
-
-
-
-
-

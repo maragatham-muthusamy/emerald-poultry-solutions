@@ -1,22 +1,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<!DOCTYPE html>
-
-<html>
-
-<head>
-	<title>List Users</title>
-	
-	<!-- reference our style sheet -->
-
-	<link type="text/css"
-		  rel="stylesheet"
-		  href="${pageContext.request.contextPath}/resources/css/style.css" />
-
-</head>
-
+<jsp:include page="header.jsp"/>
 <body>
-
+    <jsp:include page="menu.jsp"/>
 	<div id="wrapper">
 		<div id="header">
 			<h2>CRM - Customer Relationship Manager</h2>
@@ -38,9 +24,11 @@
 		
 			<table>
 				<tr>
-					<th>First Name</th>
-					<th>Last Name</th>
+					<th>Firstname</th>
+					<th>Lastname</th>
+					<th>Phone</th>
 					<th>Email</th>
+					<th>Username</th>
 					<th>Action</th>
 				</tr>
 				
@@ -60,7 +48,9 @@
 					<tr>
 						<td> ${tempUser.firstName} </td>
 						<td> ${tempUser.lastName} </td>
+						<td> ${tempUser.phone} </td>
 						<td> ${tempUser.email} </td>
+						<td> ${tempUser.username} </td>
 						
 						<td>
 							<!-- display the update link -->
@@ -75,7 +65,7 @@
 		</div>
 	</div>
 </body>
-</html>
+<jsp:include page="footer.jsp"/>
 
 
 

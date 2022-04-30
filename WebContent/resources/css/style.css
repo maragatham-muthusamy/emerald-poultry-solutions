@@ -406,9 +406,9 @@ body
  * Footer
  *
  */
-.footer div
+.footercontainer
 {
-  display: flex;
+  margin-top: 30px;
   align-items: center;
   justify-content: center;
   flex-direction: column;

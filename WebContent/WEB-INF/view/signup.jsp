@@ -5,32 +5,39 @@
     <div class = "contactuscontainer">
         <form:form method="post" modelAttribute="userForm">
             <div class ="input-group">
-                <label>Firstname</label>
-                <input type = "text" placeholder ="Enter your firstname" id="firstname" name="firstName">
+                <input type = "text" placeholder ="Firstname" id="firstname" name="firstName">
                 <span id="name-error"></span>
             </div>
 
             <div class ="input-group">
-                <label>Lastname</label>
-                <input type = "text" placeholder ="Enter your lastname" id="lastname" name="lastName">
+                <input type = "text" placeholder ="Lastname" id="lastname" name="lastName">
                 <span id="name-error"></span>
             </div>
+            
+            <div class ="input-group">
+                <input type = "tel" placeholder ="Phone" id="phone" name="phone">
+                <span id="name-error"></span>
+            </div>
+            
+            <div class ="input-group">
+                <input type = "email" placeholder ="E-mail" id="email" name="email">
+                <span id="email-error"></span>
+            </div>
+
+            <br>
 
             <div class ="input-group">
-                <label>E-Mail</label>
-                <input type = "email" placeholder ="Enter your E-mail" id="email" name="email">
+                <input type = "text" placeholder ="Username" id="username" name="username">
                 <span id="email-error"></span>
             </div>
 
             <div class ="input-group">
-                <label>Password</label>
-                <input type = "password" placeholder ="Enter your new password" id="password" name="password">
+                <input type = "password" placeholder ="New password" id="password" name="password">
                 <div id="message-error"></div>
             </div>
 
             <div class ="input-group">
-                <label>Confirm Password</label>
-                <input type = "password" placeholder ="Reenter your new password" id="password" name="confirmpassword">
+                <input type = "password" placeholder ="Confirm new password" id="password" name="confirmpassword">
                 <div id="message-error"></div>
             </div>
 

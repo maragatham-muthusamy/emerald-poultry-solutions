@@ -1,6 +1,7 @@
-    <footer class="footer">
-    <h3>Copyright &copy; Emerald Poultry Solutions </h3>
-    <div>
+    <footer>
+    <div  class="footercontainer">
+	 <h3>Copyright &copy; Emerald Poultry Solutions </h3>
+	 <br>
 	 <ul class="socials">
 	    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
 	    <li><a href="#"><i class="fa fa-twitter"></i></a></li>

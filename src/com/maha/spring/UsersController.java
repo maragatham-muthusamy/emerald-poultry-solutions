@@ -1,4 +1,4 @@
-package com.maha.spring.controller;
+package com.maha.spring;
 
 import java.util.List;
 
