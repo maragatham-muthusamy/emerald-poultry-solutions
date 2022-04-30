@@ -1,47 +1,288 @@
-html, body{
-	margin-left:15px; margin-right:15px; 
-	padding:0px; 
-	font-family:Verdana, Arial, Helvetica, sans-serif;
+/* For all pages */
+*
+{
+    margin:0;
+    padding: 0;
+    box-sizing:border-box;
+    font-family:'poppins',sans-serif;
 }
 
-table {   
-	border-collapse:collapse;
-	border-bottom:1px solid gray;
-	font-family: Tahoma,Verdana,Segoe,sans-serif;
-	width:72%;
-}
- 
-th {
-	border-bottom:1px solid gray;
-	background:none repeat scroll 0 0 #0775d3;
-	padding:10px;
-	color: #FFFFFF;
+body
+{
+    background-color: #615a58;
 }
 
-tr {
-	border-top:1px solid gray;
-	text-align:center;	
+/* 
+ *  For menu bar (mainly on menu.jsp)
+ *
+*/
+.menubar
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    letter-spacing: 2px;
+    padding: 0px 5px 5px 5px;
 }
- 
-tr:nth-child(even) {background: #FFFFFF}
-tr:nth-child(odd) {background: #BBBBBB}	
- 
-#wrapper {width: 100%; margin-top: 0px; }
-#header {width: 72%; background: #0775d3; margin-top: 0px; padding:15px 0px 15px 0px;}
-#header h2 {width: 100%; margin:auto; color: #FFFFFF;}
-#container {width: 100%; margin:auto}
-#container h3 {color: #000;}
-#container #content {margin-top: 20px;}
 
-.add-student-button {
-	border: 1px solid #666; 
-	border-radius: 5px; 
-	padding: 4px; 
-	font-size: 12px;
-	font-weight: bold;
-	width: 120px; 
-	padding: 5px 10px; 
-	
-	margin-bottom: 15px;
-	background: #cccccc;
+.logo
+{
+    margin-left:0px;
+    margin-top:10px;
 }
+
+.menubar>.menu, .menubar>.login-menu
+{
+    display: flex;
+}
+
+.menu>li, .login-menu>li
+{
+    list-style: none;
+    padding: 35px;
+}
+
+.menu>li>a, .login-menu>li>a
+{
+    text-decoration: none;
+    color: #f7a60f;
+}
+
+/*
+ *  home.jsp related styles
+ * 
+*/
+.homecontainer
+{
+    background-image:url("../images/HATCHEDCHICKENSsmall.jpg");
+    background-repeat:no-repeat;
+    width: 350;
+    height: 750px;
+    padding-right:20px;   
+    margin-left:70px;
+    margin-top:10px;
+}
+
+.home-main-data
+{
+    display: flex;
+}
+
+.main-data-left
+{
+    width: 60%;
+    padding: 5px;
+}
+
+.main-data-right
+{
+    width: 40%;
+    padding: 5px;
+}
+
+/**************************/
+/* HERO SECTION */
+/**************************/
+
+.section-hero {
+  padding: 4rem 0 7.6rem 0;
+}
+
+.hero {
+  max-width: 250rem;
+  margin: 0 auto;
+  padding-left: 1rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 9.6rem;
+  align-items:right;
+}
+
+.heading-primary {
+  font-size: 2rem;
+  line-height: 1.4;
+  margin-bottom: 2rem;
+}
+
+.hero-description {
+  font-size: 1.6rem;
+  line-height: 1.4;
+  margin-bottom: 4.8rem;
+}
+
+.delivered {
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+  margin-top: 8rem;
+}
+
+.delivered-imgs {
+  display: flex;
+}
+
+.delivered-imgs img {
+  height: 4.8rem;
+  width: 4.8rem;
+  border-radius: 50%;
+  margin-right: -1.6rem;
+  border: 3px solid #fdf2e9;
+}
+
+.delivered-imgs img:last-child {
+  margin: 0;
+}
+
+.delivered-text {
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+.delivered-text span {
+  color: #cf711f;
+  font-weight: 700;
+}
+
+
+/*
+ * About.jsp related
+ * 
+*/
+.aboutcontainer
+{
+    width:100%;
+    min-height: 70vh;
+    background-image:url("../images/HATCHEDCHICKENS.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.aboutcontainer h2
+{
+    color:#fff;
+    font-size:32px;
+    padding:50px;
+    text-align: center;
+}
+.information-row
+{
+    width:90%;
+    max-width:1100px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    grid-gap:25px;
+}
+.aboutcontainer p
+{
+    background:#1f283b;
+    padding:10% 15%;
+    border-radius:10px;
+    color:#fff;
+    text-align: center;  
+}
+
+.information-col
+{
+   background: #1f283b;
+   padding:10% 15%;
+   border-radius:10px;
+   color:#fff;
+   text-align: center;
+}
+
+.information-col p
+{
+    font-size: 22px;
+}
+
+.information-col h3
+{
+    font-size: 44px;
+    Margin: 20px 0 40px;
+    font-weight:500 ;
+}
+
+
+/*
+ *
+ * Contactus.jsp
+ *
+ */
+ 
+.contactuscontainer{
+   width: 90%;
+   height: 70vh;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   background-image:url("../images/chickenbg1.jpg");
+   background-size: cover;
+   background-position: center;
+   padding-right:20px;   
+   margin-left:70px;
+   margin-top:10px;
+}
+
+.contactuscontainer form{
+    width: 90%;
+    max-width: 500px;
+    padding: 50px 30px 20px;
+    background: #fff;
+    border-radius: 4px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+    position: relative;
+}
+
+
+.input-group{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+    position: relative;
+}
+.input-group label{
+    flex-basis: 28%;
+}
+.input-group input, .input-group textarea{
+    flex-basis: 68%;
+    background: transparent;
+    border: 0;
+    outline: 0;
+    padding: 10px 0;
+    border-bottom: 1px solid #999;
+    color: #333;
+    font-size: 16px;
+}
+
+::placeholder{
+    font-size: 14px;
+}
+
+.contactuscontainer>form button {
+    background: #141a34;
+    color: #fff;
+    border-radius: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    padding: 10px 40px;
+    outline: 0;
+    cursor: pointer;
+    display: block;
+    margin: 30px auto 10px;
+}
+
+.input-group span
+{
+    position:absolute;
+    bottom:10px;
+    right: 17px;
+    font-size:14px;
+    color:red;
+}
+
+#submit-error
+{
+    color:red;
+
+}
+
