@@ -7,7 +7,7 @@
     </ul>
 
     <ul class="login-menu">
-        <li><a href="#">Sign up</a></li>
+        <li><a href="${pageContext.request.contextPath}/signup">Sign up</a></li>
         <li><a href="${pageContext.request.contextPath}/login">Login</a></li>
     </ul>
 </nav>

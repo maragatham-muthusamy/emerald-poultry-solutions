@@ -1,24 +1,22 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <jsp:include page="header.jsp"/>
 <body>
 	<jsp:include page="menu.jsp"/>
-    <div class="login-page">
-      <div class="login-register">
-        <form class="register-form">
-          <input type="text" placeholder="name"/>
-          <input type="password" placeholder="password"/>
-          <input type="text" placeholder="email address"/>
-          <button>create</button>
-          <p class="message">Already registered? <a href="#">Sign In</a></p>
-        </form>
-        <form class="login-form">
+	<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
+    <div class="logincontainer">
+      <div class="loginform">
+        <form:form class="login-form">
+		  <c:if test="${param.error != null}">
+			<div class="alert alert-danger col-xs-offset-1 col-xs-10">
+				Invalid username or password.
+			</div>
+		</c:if>
           <input type="text" placeholder="Username"/>
           <input type="password" placeholder="Password"/>
           <button>login</button>
-          <p class="message">Not registered? <a href="#">Create an account</a></p>
-        </form>
+          <p class="message">Not registered? <a href="${pageContext.request.contextPath}/signup">Create an account</a></p>
+        </form:form>
       </div>
     </div>
-  </body>
+</body>
 <jsp:include page="footer.jsp"/>
