@@ -40,13 +40,14 @@ public class UsersController {
 		// create model attribute to bind form data
 		Users theUser = new Users();
 		
-		theModel.addAttribute("user", theUser);
+		theModel.addAttribute("useraddupd", theUser);
+		theModel.addAttribute("adding", true);
 		
-		return "user-form";
+		return "add-user";
 	}
 	
 	@PostMapping("/saveUser")
-	public String saveUser(@ModelAttribute("user") Users theUser) {
+	public String saveUser(@ModelAttribute("useraddupd") Users theUser) {
 		
 		// save the user using our service
 		userService.saveUser(theUser);	
@@ -62,10 +63,11 @@ public class UsersController {
 		Users theUser = userService.getUser(theId);	
 		
 		// set user as a model attribute to pre-populate the form
-		theModel.addAttribute("user", theUser);
+		theModel.addAttribute("useraddupd", theUser);
+		theModel.addAttribute("adding", false);
 		
 		// send over to our form		
-		return "user-form";
+		return "add-user";
 	}
 	
 	@GetMapping("/delete")
@@ -73,7 +75,6 @@ public class UsersController {
 		
 		// delete the user
 		userService.deleteUser(theId);
-		
 		return "redirect:/user/list";
 	}
 }

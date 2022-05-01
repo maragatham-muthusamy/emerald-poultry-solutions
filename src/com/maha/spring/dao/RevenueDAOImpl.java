@@ -9,65 +9,63 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.maha.spring.entity.Users;
+import com.maha.spring.entity.RevenueEntity;
 
 @Repository
-public class UsersDAOImpl implements UsersDAO {
+public class RevenueDAOImpl implements RevenueDAO {
 
 	// need to inject the session factory
 	@Autowired
 	private SessionFactory sessionFactory;
 			
 	@Override
-	public List<Users> getUser() {
+	public List<RevenueEntity> getRevenue() {
 		
 		// get the current hibernate session
 		Session currentSession = sessionFactory.getCurrentSession();
 				
 		// create a query  ... sort by last name
-		Query<Users> theQuery = 
-				currentSession.createQuery("from Users order by lastName",
-											Users.class);
-		
+		Query<RevenueEntity> theQuery = 
+				currentSession.createQuery("from Revenue", RevenueEntity.class);
+
 		// execute query and get result list
-		List<Users> users = theQuery.getResultList();
+		List<RevenueEntity> revenue = theQuery.getResultList();
 				
-		// return the results		
-		return users;
+		// return the results
+		return revenue;
 	}
 
 	@Override
-	public void saveUser(Users theUser) {
+	public void saveRevenue(RevenueEntity revenue) {
 
 		// get current hibernate session
 		Session currentSession = sessionFactory.getCurrentSession();
 		
 		// save/update the user ... finally LOL
-		currentSession.saveOrUpdate(theUser);
-		
+		currentSession.saveOrUpdate(revenue);
 	}
 
 	@Override
-	public Users getUser(int theId) {
+	public RevenueEntity getRevenue(int theId) {
 
 		// get the current hibernate session
 		Session currentSession = sessionFactory.getCurrentSession();
 		
 		// now retrieve/read from database using the primary key
-		Users theUser = currentSession.get(Users.class, theId);
+		RevenueEntity revenue = currentSession.get(RevenueEntity.class, theId);
 		
-		return theUser;
+		return revenue;
 	}
 
 	@Override
-	public void deleteUser(int theId) {
+	public void deleteRevenue(int theId) {
 
 		// get the current hibernate session
 		Session currentSession = sessionFactory.getCurrentSession();
 		
 		// delete object with primary key
-		Query theQuery = currentSession.createQuery("delete from Users where id=:userId");
-		theQuery.setParameter("userId", theId);
+		Query theQuery = currentSession.createQuery("delete from Revenue where id=:revenueId");
+		theQuery.setParameter("revenueId", theId);
 
 		theQuery.executeUpdate();
 	}

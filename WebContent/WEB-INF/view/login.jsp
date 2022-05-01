@@ -10,7 +10,7 @@
 			<div class="alert alert-danger col-xs-offset-1 col-xs-10">
 				Invalid username or password.
 			</div>
-		</c:if>
+		  </c:if>
           <input type="text" placeholder="Username"/>
           <input type="password" placeholder="Password"/>
           <button>login</button>

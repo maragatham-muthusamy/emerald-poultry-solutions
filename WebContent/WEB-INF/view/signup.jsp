@@ -37,7 +37,7 @@
             </div>
 
             <div class ="input-group">
-                <input type = "password" placeholder ="Confirm new password" id="password" name="confirmpassword">
+                <input type = "password" placeholder ="Confirm new password" id="confirmpassword" name="confirmpassword">
                 <div id="message-error"></div>
             </div>
 
