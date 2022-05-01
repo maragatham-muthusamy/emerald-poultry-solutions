@@ -73,7 +73,8 @@
 							<tr>
 								<td><label></label></td>
 								<td>
-									<input type="submit" value="Save" class="save" /> &nbsp;&nbsp;&nbsp;
+									<input type="submit" value="Save" class="save" 
+										<c:if test="${adding == true}"> onclick="return comparePassword();"</c:if>/> &nbsp;&nbsp;&nbsp;
 									<a href="${pageContext.request.contextPath}/user/list">Back to List</a>
 								</td>
 							</tr>

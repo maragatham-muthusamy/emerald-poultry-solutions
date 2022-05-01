@@ -16,6 +16,20 @@ function validateName()
     return true;
 }
 
+function comparePassword()
+{
+    var passele = document.getElementById('password');
+    var confpassele = document.getElementById('confirmpassword');
+    
+    if(passele != null && confpassele != null)
+  	{
+		if(passele.value != "") if(passele.value == confpassele.value) return true;
+	}
+
+	alert("Passwords empty or don't match");
+	return false;
+}
+
 function validatePhone()
 {
     var phone = document.getElementById('contact-phone').value;

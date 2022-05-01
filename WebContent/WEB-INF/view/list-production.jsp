@@ -8,13 +8,13 @@
 		</div>
 		<div class="middle">
 			<div class="user-header">
-				<h2>User Manager</h2>
+				<h2>Production details</h2>
 			</div>
 		</div>
 		<div class="right">
 		</div>
 	</div>
-	<div class="listusercontainer">
+	<div class="listproductioncontainer">
 		<div class="content">
 			<div class="left">
 			</div>
@@ -22,24 +22,22 @@
 			<div class="middle">
 				<table>
 					<tr>
-						<th>Firstname</th>
-						<th>Lastname</th>
-						<th>Phone</th>
-						<th>Email</th>
-						<th>Username</th>
-						<th>Action</th>
+						<th>Item</th>
+						<th>Qauntity</th>
+						<th>Price</th>
+						<th>Date</th>
 					</tr>
 					
 					<!-- loop over and print our users -->
-					<c:forEach var="tempUser" items="${users}">
+					<c:forEach var="temp" items="${productions}">
 						<!-- construct an "update" link with user id -->
-						<c:url var="updateLink" value="/user/showFormForUpdate">
+						<c:url var="updateLink" value="/production/addupd">
 							<c:param name="userId" value="${tempUser.id}" />
 						</c:url>					
 	
 						<!-- construct an "delete" link with customer id -->
-						<c:url var="deleteLink" value="/user/delete">
-							<c:param name="userId" value="${tempUser.id}" />
+						<c:url var="deleteLink" value="/production/delete">
+							<c:param name="Id" value="${temp.id}" />
 						</c:url>
 						
 						<tr>
@@ -66,7 +64,7 @@
 		<div class="content">
 			<div class="left">
 			</div>
-			<input type="button" value="Add User" onclick="window.location.href='adduser'; return false;" class="addupduser-button"/>
+			<input type="button" value="Add User" onclick="window.location.href='showFormForAdd'; return false;" class="add-user-button"/>
 			<div class="right">
 			</div>
 		</div>

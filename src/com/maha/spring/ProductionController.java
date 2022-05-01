@@ -17,8 +17,8 @@ import com.maha.spring.service.ProductionService;
 import com.maha.spring.service.UsersService;
 
 @Controller
-@RequestMapping("/user")
-public class UsersController {
+@RequestMapping("/production")
+public class ProductionController {
 
 	// need to inject our user service
 	@Autowired
@@ -31,18 +31,16 @@ public class UsersController {
 	public String listUsers(Model theModel) {
 		
 		// get users from the service
-		List<Users> theUsers = userService.getUsers();
 		List<Production> productions = productionService.getProductions();
 
 		// add the users to the model
-		theModel.addAttribute("users", theUsers);
 		theModel.addAttribute("users1", productions);
 		
-		return "list-users";
+		return "list-production";
 	}
-
-	@GetMapping("/adduser")
-	public String adduser(Model theModel) {
+	
+	@GetMapping("/showFormForAdd")
+	public String showFormForAdd(Model theModel) {
 		
 		// create model attribute to bind form data
 		Users theUser = new Users();
@@ -50,8 +48,7 @@ public class UsersController {
 		theModel.addAttribute("useraddupd", theUser);
 		theModel.addAttribute("adding", true);
 		
-		// page is common for add and update, but this handler is only for add
-		return "addupduser";
+		return "add-user";
 	}
 	
 	@PostMapping("/saveUser")
@@ -63,9 +60,10 @@ public class UsersController {
 		return "redirect:/user/list";
 	}
 	
-	@GetMapping("/updateuser")
-	public String updateuser(@RequestParam("userId") int theId, Model theModel) {
-
+	@GetMapping("/showFormForUpdate")
+	public String showFormForUpdate(@RequestParam("userId") int theId,
+									Model theModel) {
+		
 		// get the user from our service
 		Users theUser = userService.getUser(theId);	
 		
@@ -74,7 +72,7 @@ public class UsersController {
 		theModel.addAttribute("adding", false);
 		
 		// send over to our form		
-		return "addupduser";
+		return "add-user";
 	}
 	
 	@GetMapping("/delete")

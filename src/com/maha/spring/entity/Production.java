@@ -12,8 +12,8 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name="revenue")
-public class RevenueEntity {
+@Table(name="production")
+public class Production {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

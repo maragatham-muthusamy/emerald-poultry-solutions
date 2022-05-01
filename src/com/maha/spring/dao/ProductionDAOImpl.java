@@ -9,63 +9,63 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.maha.spring.entity.RevenueEntity;
+import com.maha.spring.entity.Production;
 
 @Repository
-public class RevenueDAOImpl implements RevenueDAO {
+public class ProductionDAOImpl implements ProductionDAO {
 
 	// need to inject the session factory
 	@Autowired
 	private SessionFactory sessionFactory;
 			
 	@Override
-	public List<RevenueEntity> getRevenues() {
+	public List<Production> getProductions() {
 		
 		// get the current hibernate session
 		Session currentSession = sessionFactory.getCurrentSession();
 				
 		// create a query  ... sort by last name
-		Query<RevenueEntity> theQuery = 
-				currentSession.createQuery("from RevenueEntity", RevenueEntity.class);
+		Query<Production> theQuery = 
+				currentSession.createQuery("from Production", Production.class);
 
 		// execute query and get result list
-		List<RevenueEntity> revenue = theQuery.getResultList();
+		List<Production> production = theQuery.getResultList();
 				
 		// return the results
-		return revenue;
+		return production;
 	}
 
 	@Override
-	public void saveRevenue(RevenueEntity revenue) {
+	public void saveProduction(Production production) {
 
 		// get current hibernate session
 		Session currentSession = sessionFactory.getCurrentSession();
 		
 		// save/update the user ... finally LOL
-		currentSession.saveOrUpdate(revenue);
+		currentSession.saveOrUpdate(production);
 	}
 
 	@Override
-	public RevenueEntity getRevenue(int theId) {
+	public Production getProduction(int theId) {
 
 		// get the current hibernate session
 		Session currentSession = sessionFactory.getCurrentSession();
 		
 		// now retrieve/read from database using the primary key
-		RevenueEntity revenue = currentSession.get(RevenueEntity.class, theId);
+		Production production = currentSession.get(Production.class, theId);
 		
-		return revenue;
+		return production;
 	}
 
 	@Override
-	public void deleteRevenue(int theId) {
+	public void deleteProduction(int theId) {
 
 		// get the current hibernate session
 		Session currentSession = sessionFactory.getCurrentSession();
 		
 		// delete object with primary key
-		Query theQuery = currentSession.createQuery("delete from RevenueEntity where id=:revenueId");
-		theQuery.setParameter("revenueId", theId);
+		Query theQuery = currentSession.createQuery("delete from Production where id=:productionId");
+		theQuery.setParameter("productionId", theId);
 
 		theQuery.executeUpdate();
 	}
