@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.maha.spring.entity.Users;
+import com.maha.spring.entity.RevenueEntity;
+import com.maha.spring.service.RevenueService;
 import com.maha.spring.service.UsersService;
 
 @Controller
@@ -21,15 +23,20 @@ public class UsersController {
 	// need to inject our user service
 	@Autowired
 	private UsersService userService;
+
+	@Autowired
+	private RevenueService revenueService;
 	
 	@GetMapping("/list")
 	public String listUsers(Model theModel) {
 		
 		// get users from the service
 		List<Users> theUsers = userService.getUsers();
+		List<RevenueEntity> revenues = revenueService.getRevenues();
 
 		// add the users to the model
 		theModel.addAttribute("users", theUsers);
+		theModel.addAttribute("users1", revenues);
 		
 		return "list-users";
 	}

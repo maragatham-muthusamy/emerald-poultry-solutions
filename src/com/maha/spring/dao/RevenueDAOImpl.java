@@ -19,14 +19,14 @@ public class RevenueDAOImpl implements RevenueDAO {
 	private SessionFactory sessionFactory;
 			
 	@Override
-	public List<RevenueEntity> getRevenue() {
+	public List<RevenueEntity> getRevenues() {
 		
 		// get the current hibernate session
 		Session currentSession = sessionFactory.getCurrentSession();
 				
 		// create a query  ... sort by last name
 		Query<RevenueEntity> theQuery = 
-				currentSession.createQuery("from Revenue", RevenueEntity.class);
+				currentSession.createQuery("from RevenueEntity", RevenueEntity.class);
 
 		// execute query and get result list
 		List<RevenueEntity> revenue = theQuery.getResultList();
@@ -64,7 +64,7 @@ public class RevenueDAOImpl implements RevenueDAO {
 		Session currentSession = sessionFactory.getCurrentSession();
 		
 		// delete object with primary key
-		Query theQuery = currentSession.createQuery("delete from Revenue where id=:revenueId");
+		Query theQuery = currentSession.createQuery("delete from RevenueEntity where id=:revenueId");
 		theQuery.setParameter("revenueId", theId);
 
 		theQuery.executeUpdate();
