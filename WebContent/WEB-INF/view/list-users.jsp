@@ -1,6 +1,10 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<jsp:include page="header.jsp"/>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<jsp:include page="header.jsp"/>
+</head>
 <body>
     <jsp:include page="menu.jsp"/>
 	<div class="user-wrapper">
@@ -33,7 +37,7 @@
 					<!-- loop over and print our users -->
 					<c:forEach var="tempUser" items="${users}">
 						<!-- construct an "update" link with user id -->
-						<c:url var="updateLink" value="/user/showFormForUpdate">
+						<c:url var="updateLink" value="/user/update">
 							<c:param name="userId" value="${tempUser.id}" />
 						</c:url>					
 	
@@ -66,13 +70,13 @@
 		<div class="content">
 			<div class="left">
 			</div>
-			<input type="button" value="Add User" onclick="window.location.href='adduser'; return false;" class="addupduser-button"/>
+			<input type="button" value="Add User" onclick="window.location.href='add'; return false;" class="addupd-button"/>
 			<div class="right">
 			</div>
 		</div>
 	</div>
 </body>
 <jsp:include page="footer.jsp"/>
-
+</html>
 
 

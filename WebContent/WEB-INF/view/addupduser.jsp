@@ -1,6 +1,10 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
-<jsp:include page="header.jsp"/>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<jsp:include page="header.jsp"/>
+</head>
 <body>
     <jsp:include page="menu.jsp"/>
 	<div class="user-wrapper">
@@ -20,7 +24,7 @@
 			<div class="left">
 			</div>
 			<div class="middle">
-				<form:form action="saveUser" modelAttribute="useraddupd" method="POST">
+				<form:form action="save" modelAttribute="addupd" method="POST">
 					<!-- need to associate this data with user id -->
 					<form:hidden path="id"/>
 					<table>
@@ -34,17 +38,17 @@
 								<td><label>Last name:</label></td>
 								<td><form:input path="lastName" placeholder="Lastname"/></td>
 							</tr>
-		
+
 							<tr>
 								<td><label>Phone:</label></td>
 								<td><form:input path="phone" placeholder="Phone"/></td>
 							</tr>
-		
+
 							<tr>
 								<td><label>Email:</label></td>
 								<td><form:input path="email" placeholder="Email"/></td>
 							</tr>
-		
+
 							<tr>
 								<td><label>Username:</label></td>
 								<td><form:input path="username" placeholder="Username"/></td>
@@ -88,4 +92,4 @@
 	</div>
 </body>
 <jsp:include page="footer.jsp"/>
-
+</html>

@@ -387,24 +387,6 @@ body
 
 /*
  *
- * footer
- *
- */
-.footer{
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-}
-
-#shareicons img {
-  width: 50px;
-  padding: 10px;
-  display: inline;
-}
-
-/*
- *
  * Footer
  *
  */
@@ -415,6 +397,10 @@ body
   justify-content: center;
   flex-direction: column;
   text-align: center;	
+}
+
+.footercontainer h3 {
+	color: #FFF;
 }
 
 .socials{
@@ -431,7 +417,7 @@ body
 
 .socials a{
     text-decoration: none;
-    color: #fff;
+    color: #FFF;
     border: 1.1px solid white;
     padding: 5px;
     border-radius: 50%;
@@ -449,13 +435,17 @@ body
 
 /*
  *
- * listusercontainer / addupdcontainer / listproductioncontainer
+ * listuserrgb(0, 0, 255)ainer / addupdcontainer / listproductioncontainer
  *
  */
 .listusercontainer, .addupdcontainer, .listproductioncontainer{
   	width: 100%;
   	height: 58vh;
  	margin-top: 20px;
+}
+
+.addupdcontainer .content label{
+	color: #FFF;
 }
 
 .listusercontainer .content, .addupdcontainer .content, .listproductioncontainer .content{
@@ -472,46 +462,46 @@ body
 	width: 60%;
 }
 
-.listusercontainer table { 
+.listusercontainer .content input, .listproductioncontainer .content input {
+	width: 175px;
+	height: 40px;
+}
+
+.listusercontainer table, .listproductioncontainer table { 
 	border-collapse:collapse;
 	border-bottom:1px solid gray;
 	font-family: Tahoma,Verdana,Segoe,sans-serif;
 	width:100%;
 }
  
-.listusercontainer .content input{
-	width: 175px;
-	height: 40px;
-}
-.listusercontainer table th {
+.listusercontainer table th, .listproductioncontainer table th{
 	border-bottom:1px solid gray;
 	background:none repeat scroll 0 0 #0775d3;
 	padding:10px;
 	color: #FFFFFF;
 }
 
-.listusercontainer table tr {
+.listusercontainer table tr, .listproductioncontainer table tr {
 	border-top:1px solid gray;
 	text-align:center;	
 }
  
-.listusercontainer table tr:nth-child(even){
+.listusercontainer table tr:nth-child(even), .listproductioncontainer table tr:nth-child(even){
   background: #FFFFFF;
 }
 
-.listusercontainer table tr:nth-child(odd){
+.listusercontainer table tr:nth-child(odd), .listproductioncontainer table tr:nth-child(odd){
   background: #BBBBBB
-}	
- 
-.addupduser-button{
-	border: 1px solid #666; 
-	border-radius: 5px; 
-	padding: 4px; 
+}
+
+.addupd-button {
+	border: 1px solid #666;
+	border-radius: 5px;
+	padding: 4px;
 	font-size: 12px;
 	font-weight: bold;
-	width: 120px; 
-	padding: 5px 10px; 
-	
+	width: 120px;
+	padding: 5px 10px;
 	margin-bottom: 15px;
 	background: #cccccc;
 }

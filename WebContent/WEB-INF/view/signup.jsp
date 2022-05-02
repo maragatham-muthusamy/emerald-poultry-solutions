@@ -1,4 +1,8 @@
-<jsp:include page="header.jsp"/>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<jsp:include page="header.jsp"/>
+</head>
 <body>
 	<jsp:include page="menu.jsp"/>
 	<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
@@ -47,3 +51,4 @@
     </div>
 </body>
 <jsp:include page="footer.jsp"/>
+</html>

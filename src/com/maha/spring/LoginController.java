@@ -36,7 +36,7 @@ public class LoginController {
 	}
 
 	@RequestMapping(value = "/signup", method = RequestMethod.POST)
-	public String signuppost(@Validated User user, @ModelAttribute("userForm")User userform, Model model) {
+	public String signuppost(@ModelAttribute("userForm")User userform, Model model) {
 		Users oneuser = new Users();
 		
 		oneuser.setFirstName(userform.getFirstName());

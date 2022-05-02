@@ -7,9 +7,8 @@ import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
-import com.maha.spring.entity.Production;
+import com.maha.spring.entity.Productions;
 
 @Repository
 public class ProductionDAOImpl implements ProductionDAO {
@@ -19,24 +18,24 @@ public class ProductionDAOImpl implements ProductionDAO {
 	private SessionFactory sessionFactory;
 			
 	@Override
-	public List<Production> getProductions() {
+	public List<Productions> getProductions() {
 		
 		// get the current hibernate session
 		Session currentSession = sessionFactory.getCurrentSession();
 				
 		// create a query  ... sort by last name
-		Query<Production> theQuery = 
-				currentSession.createQuery("from Production", Production.class);
+		Query<Productions> theQuery = 
+				currentSession.createQuery("from Productions", Productions.class);
 
 		// execute query and get result list
-		List<Production> production = theQuery.getResultList();
+		List<Productions> production = theQuery.getResultList();
 				
 		// return the results
 		return production;
 	}
 
 	@Override
-	public void saveProduction(Production production) {
+	public void saveProduction(Productions production) {
 
 		// get current hibernate session
 		Session currentSession = sessionFactory.getCurrentSession();
@@ -46,13 +45,13 @@ public class ProductionDAOImpl implements ProductionDAO {
 	}
 
 	@Override
-	public Production getProduction(int theId) {
+	public Productions getProduction(int theId) {
 
 		// get the current hibernate session
 		Session currentSession = sessionFactory.getCurrentSession();
 		
 		// now retrieve/read from database using the primary key
-		Production production = currentSession.get(Production.class, theId);
+		Productions production = currentSession.get(Productions.class, theId);
 		
 		return production;
 	}
@@ -64,7 +63,7 @@ public class ProductionDAOImpl implements ProductionDAO {
 		Session currentSession = sessionFactory.getCurrentSession();
 		
 		// delete object with primary key
-		Query theQuery = currentSession.createQuery("delete from Production where id=:productionId");
+		Query theQuery = currentSession.createQuery("delete from Productions where id=:productionId");
 		theQuery.setParameter("productionId", theId);
 
 		theQuery.executeUpdate();

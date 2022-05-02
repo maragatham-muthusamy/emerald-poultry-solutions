@@ -11,75 +11,69 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.maha.spring.entity.Users;
-import com.maha.spring.entity.Production;
+import com.maha.spring.entity.Productions;
 import com.maha.spring.service.ProductionService;
-import com.maha.spring.service.UsersService;
 
 @Controller
 @RequestMapping("/production")
 public class ProductionController {
 
-	// need to inject our user service
-	@Autowired
-	private UsersService userService;
-
+	// need to inject our production service
 	@Autowired
 	private ProductionService productionService;
 	
 	@GetMapping("/list")
 	public String listUsers(Model theModel) {
-		
+
 		// get users from the service
-		List<Production> productions = productionService.getProductions();
+		List<Productions> productions = productionService.getProductions();
 
 		// add the users to the model
-		theModel.addAttribute("users1", productions);
+		theModel.addAttribute("productions", productions);
 		
 		return "list-production";
 	}
 	
-	@GetMapping("/showFormForAdd")
-	public String showFormForAdd(Model theModel) {
+	@GetMapping("/add")
+	public String add(Model theModel) {
 		
 		// create model attribute to bind form data
-		Users theUser = new Users();
-		
-		theModel.addAttribute("useraddupd", theUser);
-		theModel.addAttribute("adding", true);
-		
-		return "add-user";
+		Productions production = new Productions();
+
+		theModel.addAttribute("addupd", production);
+
+		return "addupdproduction";
 	}
 	
-	@PostMapping("/saveUser")
-	public String saveUser(@ModelAttribute("useraddupd") Users theUser) {
-		
+	@PostMapping("/save")
+	public String save(@ModelAttribute("addupd") Productions production) {
+
 		// save the user using our service
-		userService.saveUser(theUser);	
-		
-		return "redirect:/user/list";
+		production.setUserId(1);
+		productionService.saveProduction(production);	
+
+		return "redirect:/production/list";
 	}
 	
-	@GetMapping("/showFormForUpdate")
-	public String showFormForUpdate(@RequestParam("userId") int theId,
-									Model theModel) {
-		
+	@GetMapping("/update")
+	public String update(@RequestParam("prodid") int theId, Model theModel) {
 		// get the user from our service
-		Users theUser = userService.getUser(theId);	
-		
+		Productions production = productionService.getProduction(theId);
+
 		// set user as a model attribute to pre-populate the form
-		theModel.addAttribute("useraddupd", theUser);
+		theModel.addAttribute("addupd", production);
 		theModel.addAttribute("adding", false);
-		
+
 		// send over to our form		
-		return "add-user";
+		return "addupdproduction";
 	}
-	
+
 	@GetMapping("/delete")
-	public String deleteUser(@RequestParam("userId") int theId) {
+	public String deleteUser(@RequestParam("prodId") int theId) {
 		
 		// delete the user
-		userService.deleteUser(theId);
-		return "redirect:/user/list";
+		productionService.deleteProduction(theId);
+		return "redirect:/production/list";
 	}
 }
+

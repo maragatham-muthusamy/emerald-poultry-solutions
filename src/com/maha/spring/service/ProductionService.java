@@ -2,14 +2,14 @@ package com.maha.spring.service;
 
 import java.util.List;
 
-import com.maha.spring.entity.Production;
+import com.maha.spring.entity.Productions;
 
 public interface ProductionService {
-	public List<Production> getProductions();
+	public List<Productions> getProductions();
 
-	public void saveProduction(Production production);
+	public void saveProduction(Productions production);
 	
-	public Production getProduction(int theId);
+	public Productions getProduction(int theId);
 
 	public void deleteProduction(int theId);
 }
