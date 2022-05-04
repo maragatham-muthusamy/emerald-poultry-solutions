@@ -1,4 +1,4 @@
-package com.maha.spring;
+package com.maha.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;

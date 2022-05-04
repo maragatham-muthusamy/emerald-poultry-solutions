@@ -1,4 +1,4 @@
-package com.maha.spring;
+package com.maha.controller;
 
 public class User {
 
