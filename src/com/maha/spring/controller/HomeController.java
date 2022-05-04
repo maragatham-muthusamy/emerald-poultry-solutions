@@ -1,8 +1,7 @@
-package com.maha.controller;
+package com.maha.spring.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -17,8 +16,7 @@ public class HomeController {
 	 */
 	
 	@RequestMapping(value = "/home", method = RequestMethod.POST)
-	public String home(@Validated User user, Model model) {
-		model.addAttribute("userName", user.getFirstName());
+	public String home(Model model) {
 		return "home";
 	}
 }

@@ -261,7 +261,7 @@ body
     font-size: 14px;
 }
 
-.contactuscontainer>form button {
+.contactuscontainer>form .button {
     background: #141a34;
     color: #fff;
     border-radius: 4px;
@@ -282,11 +282,24 @@ body
     color:red;
 }
 
+.input-group .message
+{
+    position:absolute;
+    bottom:10px;
+    right: 17px;
+    font-size:14px;
+    color: #0000A0;
+}
+
 #submit-error
 {
     color:red;
 }
 
+#submit-response
+{
+    color: #00C000;
+}
 
 /*
  *

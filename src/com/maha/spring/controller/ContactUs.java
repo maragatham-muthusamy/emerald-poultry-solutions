@@ -1,4 +1,4 @@
-package com.maha.controller;
+package com.maha.spring.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -19,7 +19,7 @@ public class ContactUs {
 
     @RequestMapping(value = "/contactus", method = RequestMethod.POST)
     public String handlePostRequest(@ModelAttribute("contactusform") ContactUSForm contactusform, ModelMap modelMap) {
-        contactusform.setResult("Your message has been posted !!");
+    	// TODO: create DAO / hibernate classes and post these values to database
         //modelMap.put("contactusform", contactusform);
         modelMap.addAttribute("result", "Your message has been received. Thank you!");
         return "contactus";

@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +8,7 @@
 	<jsp:include page="menu.jsp"/>
 	<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
     <div class = "contactuscontainer">
-        <form:form onsubmit="post">
+        <form:form>
             <div class ="input-group">
                 <label>Fullname</label>
                 <input type = "text" placeholder ="Enter your name" id="contact-name" onkeyup="validateName()">
@@ -29,11 +30,12 @@
             <div class ="input-group">
                 <label>Your Message</label>
                 <textarea rows="5" placeholder="Enter your Meassage" id="contact-message" onkeyup="validateMessage()"></textarea>
-                <div id="message-error"></div>
+                <div class="message" id="message-error"></div>
             </div>
 
-            <button onclick="validateForm()">Submit</button>
-            <span id="submit-error" ></span>
+            <input class="button" type="submit" value="Submit" onclick="return validateForm()"/>
+            <span id="submit-error"></span>
+            <span id="submit-response">${result}</span>
         </form:form>
     </div>
 </body>

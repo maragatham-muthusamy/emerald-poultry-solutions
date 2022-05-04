@@ -1,18 +1,16 @@
-var nameError = document.getElementById('name-error');
-var phoneError = document.getElementById('phone-error');
-var emailError = document.getElementById('email-error');
-var submitError = document.getElementById('submit-error');
 
 function validateName()
 {
+	var nameError = document.getElementById('name-error');
     var name = document.getElementById('contact-name').value;
+
     if(name.length ==0)
     {
-        nameError.innerHTML='Name is required';
+        nameError.innerHTML='Required';
         return false;
     }
     
-    nameError.innerHTML ='valid';
+    nameError.innerHTML ='';
     return true;
 }
 
@@ -32,16 +30,17 @@ function comparePassword()
 
 function validatePhone()
 {
+	var phoneError = document.getElementById('phone-error');
     var phone = document.getElementById('contact-phone').value;
     if(phone.length ==0)
     {
-        phoneError.innerHTML='Phonenumber is required';
+        phoneError.innerHTML='Required';
         return false;
 
     }
     if(phone.length !==10)
     {
-        phoneError.innerHTML ='Invalid Phone Number';
+        phoneError.innerHTML ='Invalid';
         return false;
     }
 
@@ -51,54 +50,52 @@ function validatePhone()
         return false;
     }
  
-    phoneError.innerHTML = 'valid';
+    phoneError.innerHTML = '';
     return true;
 }
 
 function validateEmail()
 {
+	var emailError = document.getElementById('email-error');
     var email = document.getElementById('contact-email').value;
     if(email.length ==0)
     {
-        emailError.innerHTML='Email is required';
+        emailError.innerHTML='Required';
         return false;
     }
 
     if(!email.match("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$"))
     {
-        emailError.innerHTML='Email Invalid';
+        emailError.innerHTML='Invalid';
         return false;
     }
    
-    emailError.innerHTML = 'valid';
+    emailError.innerHTML = '';
     return true;
 }
 
 function validateMessage()
 {
-    var message = document.getElementById('contact-message').value;
-    messageError.innerHTML = 'valid';
-    /*var required = 30;
-    var left = required - message.length;
-    var messageError = document.getElementById('meassage-error');
+	var max = 50;
+    var message = document.getElementById('contact-message');
+    var left = max - message.value.length;
+    var messageError = document.getElementById('message-error');
 
-    if(left > 0)
+    if(left >= 0)
     {
-        messageError.innerHTML = 'a ' + left + 'more characters required';
+        messageError.innerHTML = left + ' chars left';
         return true;
     }
 
-    alert("valid");
-
-    messageError.innerHTML = 'valid';*/
-    return true;
-   
+	message.value = message.value.slice(0, max);
+	return false;
 }
 
 function validateForm()
 {
-    if(!validateName() || !validatePhone() ||!validateEmail() ||!validateMessage())
+    if(!validateName() || !validatePhone() || !validateEmail() || !validateMessage())
     {
+		var submitError = document.getElementById('submit-error');
         submitError.style.display ='block';
         submitError.innerHtml =" please fix the error to submit";
         setTimeout(
@@ -107,10 +104,6 @@ function validateForm()
                 submitError.style.display ='none';
             },3000);
         return false;
-    }
-    else
-    {
-        alert("Message added successfully")
     }
 }
 

@@ -1,4 +1,4 @@
-package com.maha.controller;
+package com.maha.spring.controller;
 
 import java.util.Locale;
 
