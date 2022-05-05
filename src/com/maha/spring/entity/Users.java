@@ -93,7 +93,7 @@ public class Users {
 	public void setUsername(String userName) {
 		this.userName = userName;
 	}
-
+	
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + "phone" + phone + "]";
