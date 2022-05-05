@@ -16,22 +16,22 @@ public class Users {
 	@Column(name="id")
 	private int id;
 	
-	@Column(name="firstname", nullable = false, length = 50)
+	@Column(name="firstname")
 	private String firstName;
 	
-	@Column(name="lastname", nullable = false, length = 50)
+	@Column(name="lastname")
 	private String lastName;
 	
-	@Column(name="phone", nullable = false, length = 15)
+	@Column(name="phone")
 	private String phone;
 	
-	@Column(name="email", unique = true, length = 100)
+	@Column(name="email")
 	private String email;
 	
-	@Column(name="username", nullable = false, length = 50)
+	@Column(name="username")
 	private String userName;
 	
-	@Column(name="password", nullable = false, length = 50)
+	@Column(name="password")
 	private String password;
 
 	public Users() {
