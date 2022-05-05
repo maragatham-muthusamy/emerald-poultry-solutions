@@ -3,7 +3,6 @@ package com.maha.spring.controller;
 import java.util.Locale;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
@@ -12,17 +11,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.maha.spring.entity.Users;
-import com.maha.spring.security.UserRepository;
 import com.maha.spring.service.UsersService;
 
 @Controller
 public class LoginController {
 
-//    @Autowired
-    private UserRepository userRepo;
-     
-    // @Autowired
-	// private UsersService userService;
+	@Autowired
+	private UsersService userService;
 	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String login(Locale locale, Model model) {
@@ -43,7 +38,7 @@ public class LoginController {
 	@RequestMapping(value = "/signup", method = RequestMethod.POST)
 	public String signuppost(@ModelAttribute("userForm")User userform, Model model) {
 		Users oneuser = new Users();
-
+		
 		oneuser.setFirstName(userform.getFirstName());
 		oneuser.setLastName(userform.getLastName());
 		oneuser.setEmail(userform.getEmail());
@@ -51,13 +46,7 @@ public class LoginController {
 		oneuser.setUsername(userform.getUsername());
 		oneuser.setPassword(userform.getPassword());
 
-		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-		String encodedPassword = passwordEncoder.encode(oneuser.getPassword());
-		
-		oneuser.setPassword(encodedPassword);
-
-		userRepo.save(oneuser);
-		//userService.saveUser(oneuser);
+		userService.saveUser(oneuser);
 		
 		// model.addAttribute("userName", user.getUserName());
 		return "home";
