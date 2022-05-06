@@ -25,8 +25,8 @@ public class Production {
 	@Column(name="userid")
 	private int userId;
 	
-	@Column(name="itemid")
-	private int itemId;
+	@Column(name="item")
+	private String item;
 	
 	@Column(name="quantity")
 	private int quantity;
@@ -55,12 +55,12 @@ public class Production {
 		this.userId = userId;
 	}
 
-	public int getItemId() {
-		return itemId;
+	public String getItem() {
+		return item;
 	}
 
-	public void setItemId(int itemId) {
-		this.itemId = itemId;
+	public void setItem(String item) {
+		this.item = item;
 	}
 
 	public int getQuantity() {

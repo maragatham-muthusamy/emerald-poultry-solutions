@@ -1,0 +1,30 @@
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org">
+<head>
+</head>
+<body>
+	<div th:fragment="menubar">
+		<nav class="menubar">
+			<div class="logo">
+				<img th:src="@{/images/logo.png}">
+			</div>
+			<ul class="menu">
+				<li><a href="/">Home</a></li>
+				<li><a href="/aboutus">About</a></li>
+				<li><a href="/contactus">Contact</a></li>
+			</ul>
+
+			<div class="login-menu">
+				<div sec:authorize="isAuthenticated()">
+				    Welcome, <span sec:authentication="name">FullName</span>     
+					<a href="/logout">Logout</a>
+				</div>
+				<div sec:authorize="isAnonymous()">
+					<a href="/signup">Sign up</a>
+					<a href="/login">Login</a>
+				</div>
+			</div>
+		</nav>
+	</div>
+</body>
+</html>

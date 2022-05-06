@@ -6,6 +6,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 import com.maha.spring.entity.User;
+import com.maha.spring.service.UserRepository;
 
 public class CustomUserDetailsService implements UserDetailsService {
 
