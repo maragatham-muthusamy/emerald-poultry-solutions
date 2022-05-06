@@ -8,7 +8,7 @@ import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.maha.spring.entity.Users;
+import com.maha.spring.entity.User;
 
 @Repository
 public class UsersDAOImpl implements UsersDAO {
@@ -18,25 +18,25 @@ public class UsersDAOImpl implements UsersDAO {
 	private SessionFactory sessionFactory;
 			
 	@Override
-	public List<Users> getUser() {
+	public List<User> getUser() {
 		
 		// get the current hibernate session
 		Session currentSession = sessionFactory.getCurrentSession();
 				
 		// create a query  ... sort by last name
-		Query<Users> theQuery = 
+		Query<User> theQuery = 
 				currentSession.createQuery("from Users order by lastName",
-											Users.class);
+											User.class);
 		
 		// execute query and get result list
-		List<Users> users = theQuery.getResultList();
+		List<User> users = theQuery.getResultList();
 				
 		// return the results		
 		return users;
 	}
 
 	@Override
-	public void saveUser(Users theUser) {
+	public void saveUser(User theUser) {
 
 		// get current hibernate session
 		Session currentSession = sessionFactory.getCurrentSession();
@@ -47,13 +47,13 @@ public class UsersDAOImpl implements UsersDAO {
 	}
 
 	@Override
-	public Users getUser(int theId) {
+	public User getUser(int theId) {
 
 		// get the current hibernate session
 		Session currentSession = sessionFactory.getCurrentSession();
 		
 		// now retrieve/read from database using the primary key
-		Users theUser = currentSession.get(Users.class, theId);
+		User theUser = currentSession.get(User.class, theId);
 		
 		return theUser;
 	}

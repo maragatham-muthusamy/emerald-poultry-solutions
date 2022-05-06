@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.maha.spring.entity.Productions;
+import com.maha.spring.entity.Production;
 import com.maha.spring.service.ProductionService;
 
 @Controller
@@ -26,7 +26,7 @@ public class ProductionController {
 	public String listUsers(Model theModel) {
 
 		// get users from the service
-		List<Productions> productions = productionService.getProductions();
+		List<Production> productions = productionService.getProductions();
 
 		// add the users to the model
 		theModel.addAttribute("productions", productions);
@@ -38,7 +38,7 @@ public class ProductionController {
 	public String add(Model theModel) {
 		
 		// create model attribute to bind form data
-		Productions production = new Productions();
+		Production production = new Production();
 
 		theModel.addAttribute("addupd", production);
 
@@ -46,7 +46,7 @@ public class ProductionController {
 	}
 	
 	@PostMapping("/save")
-	public String save(@ModelAttribute("addupd") Productions production) {
+	public String save(@ModelAttribute("addupd") Production production) {
 
 		// save the user using our service
 		production.setUserId(1);
@@ -58,7 +58,7 @@ public class ProductionController {
 	@GetMapping("/update")
 	public String update(@RequestParam("prodid") int theId, Model theModel) {
 		// get the user from our service
-		Productions production = productionService.getProduction(theId);
+		Production production = productionService.getProduction(theId);
 
 		// set user as a model attribute to pre-populate the form
 		theModel.addAttribute("addupd", production);

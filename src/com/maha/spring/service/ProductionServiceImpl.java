@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.maha.spring.dao.ProductionDAO;
-import com.maha.spring.entity.Productions;
+import com.maha.spring.entity.Production;
 
 @Service
 public class ProductionServiceImpl implements ProductionService {
@@ -18,20 +18,20 @@ public class ProductionServiceImpl implements ProductionService {
 	
 	@Override
 	@Transactional
-	public List<Productions> getProductions() {
+	public List<Production> getProductions() {
 		return productionDAO.getProductions();
 	}
 
 	@Override
 	@Transactional
-	public void saveProduction(Productions production) {
+	public void saveProduction(Production production) {
 
 		productionDAO.saveProduction(production);
 	}
 
 	@Override
 	@Transactional
-	public Productions getProduction(int theId) {
+	public Production getProduction(int theId) {
 		
 		return productionDAO.getProduction(theId);
 	}

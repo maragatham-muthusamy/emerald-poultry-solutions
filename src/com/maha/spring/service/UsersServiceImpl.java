@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.maha.spring.dao.UsersDAO;
-import com.maha.spring.entity.Users;
+import com.maha.spring.entity.User;
 
 @Service
 public class UsersServiceImpl implements UsersService {
@@ -18,20 +18,20 @@ public class UsersServiceImpl implements UsersService {
 	
 	@Override
 	@Transactional
-	public List<Users> getUsers() {
+	public List<User> getUsers() {
 		return userDAO.getUser();
 	}
 
 	@Override
 	@Transactional
-	public void saveUser(Users theUser) {
+	public void saveUser(User theUser) {
 
 		userDAO.saveUser(theUser);
 	}
 
 	@Override
 	@Transactional
-	public Users getUser(int theId) {
+	public User getUser(int theId) {
 		
 		return userDAO.getUser(theId);
 	}

@@ -1,11 +1,11 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
-	<jsp:include page="header.jsp"/>
-	<script type="text/javascript">
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+<jsp:include page="header.jsp" />
+<script type="text/javascript">
 		window.onload = function() {
 		var dps = [[], []];
 		var chart = new CanvasJS.Chart("chartContainer", {
@@ -74,22 +74,19 @@
 	</script>
 </head>
 <body>
-    <jsp:include page="menu.jsp"/>
+	<jsp:include page="menu.jsp" />
 	<div class="user-wrapper">
-		<div class="left">
-		</div>
+		<div class="left"></div>
 		<div class="middle">
 			<div class="user-header">
 				<h2>Production Details</h2>
 			</div>
 		</div>
-		<div class="right">
-		</div>
+		<div class="right"></div>
 	</div>
 	<div class="listproductioncontainer">
 		<div class="content">
-			<div class="left">
-			</div>
+			<div class="left"></div>
 
 			<div class="middle">
 				<table>
@@ -100,7 +97,7 @@
 						<th>Date</th>
 						<th>Action</th>
 					</tr>
-					
+
 					<!-- loop over and print our users -->
 					<c:forEach var="temp" items="${productions}">
 						<!-- construct an "update" link with id -->
@@ -114,42 +111,38 @@
 						</c:url>
 
 						<tr>
-							<td> ${temp.itemId} </td>
-							<td> ${temp.quantity} </td>
-							<td> ${temp.price} </td>
-							<td> ${temp.date} </td>
+							<td>${temp.itemId}</td>
+							<td>${temp.quantity}</td>
+							<td>${temp.price}</td>
+							<td>${temp.date}</td>
 
 							<td>
-								<!-- display the update link -->
-								<a href="${updateLink}">Update</a> | <a href="${deleteLink}"
-								   onclick="if (!(confirm('Are you sure you want to delete this record?'))) return false">Delete</a>
+								<!-- display the update link --> <a href="${updateLink}">Update</a>
+								| <a href="${deleteLink}"
+								onclick="if (!(confirm('Are you sure you want to delete this record?'))) return false">Delete</a>
 							</td>
 						</tr>
 					</c:forEach>
 				</table>
 			</div>
-			<div class="right">
-			</div>
+			<div class="right"></div>
 		</div>
-		<br>
-		<br>
+		<br> <br>
 		<div class="content">
-			<div class="left">
-			</div>
-			<input type="button" value="Add Record" onclick="window.location.href='add'; return false;" class="addupd-button"/>
-			<div class="right">
-			</div>
+			<div class="left"></div>
+			<input type="button" value="Add Record"
+				onclick="window.location.href='add'; return false;"
+				class="addupd-button" />
+			<div class="right"></div>
 		</div>
 		<div class="content">
-			<div class="left">
-			</div>
+			<div class="left"></div>
 			<div id="chartContainer" style="height: 370px; width: 100%;"></div>
-			<div class="right">
-			</div>
+			<div class="right"></div>
 		</div>
 	</div>
 </body>
-<jsp:include page="footer.jsp"/>
+<jsp:include page="footer.jsp" />
 </html>
 
 

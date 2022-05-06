@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.maha.spring.entity.Users;
+import com.maha.spring.entity.User;
 import com.maha.spring.service.UsersService;
 
 @Controller
@@ -26,7 +26,7 @@ public class UsersController {
 	public String list(Model theModel) {
 		
 		// get users from the service
-		List<Users> theUsers = userService.getUsers();
+		List<User> theUsers = userService.getUsers();
 
 		// add the users to the model
 		theModel.addAttribute("users", theUsers);
@@ -38,7 +38,7 @@ public class UsersController {
 	public String add(Model theModel) {
 		
 		// create model attribute to bind form data
-		Users theUser = new Users();
+		User theUser = new User();
 		
 		theModel.addAttribute("addupd", theUser);
 		theModel.addAttribute("adding", true);
@@ -48,7 +48,7 @@ public class UsersController {
 	}
 	
 	@PostMapping("/save")
-	public String save(@ModelAttribute("addupd") Users theUser) {
+	public String save(@ModelAttribute("addupd") User theUser) {
 
 		// save the user using our service
 		userService.saveUser(theUser);
@@ -60,7 +60,7 @@ public class UsersController {
 	public String update(@RequestParam("userId") int theId, Model theModel) {
 
 		// get the user from our service
-		Users theUser = userService.getUser(theId);	
+		User theUser = userService.getUser(theId);	
 
 		// set user as a model attribute to pre-populate the form
 		theModel.addAttribute("addupd", theUser);

@@ -1,6 +1,6 @@
 package com.maha.spring.controller;
 
-public class User {
+public class UserForm {
 
 	private String firstname;
 	private String lastname;
@@ -57,7 +57,7 @@ public class User {
 		this.password = password;
 	}
 
-	public User() {
+	public UserForm() {
 		
 	}
 }

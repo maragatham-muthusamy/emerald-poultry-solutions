@@ -2,15 +2,15 @@ package com.maha.spring.dao;
 
 import java.util.List;
 
-import com.maha.spring.entity.Productions;
+import com.maha.spring.entity.Production;
 
 public interface ProductionDAO {
 
-	public List<Productions> getProductions();
+	public List<Production> getProductions();
 	
-	public void saveProduction(Productions production);
+	public void saveProduction(Production production);
 
-	public Productions getProduction(int theId);
+	public Production getProduction(int theId);
 
 	public void deleteProduction(int theId);
 

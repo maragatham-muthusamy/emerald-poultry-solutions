@@ -8,7 +8,7 @@ import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.maha.spring.entity.Productions;
+import com.maha.spring.entity.Production;
 
 @Repository
 public class ProductionDAOImpl implements ProductionDAO {
@@ -18,24 +18,24 @@ public class ProductionDAOImpl implements ProductionDAO {
 	private SessionFactory sessionFactory;
 			
 	@Override
-	public List<Productions> getProductions() {
+	public List<Production> getProductions() {
 		
 		// get the current hibernate session
 		Session currentSession = sessionFactory.getCurrentSession();
 				
 		// create a query  ... sort by last name
-		Query<Productions> theQuery = 
-				currentSession.createQuery("from Productions", Productions.class);
+		Query<Production> theQuery = 
+				currentSession.createQuery("from Productions", Production.class);
 
 		// execute query and get result list
-		List<Productions> production = theQuery.getResultList();
+		List<Production> production = theQuery.getResultList();
 				
 		// return the results
 		return production;
 	}
 
 	@Override
-	public void saveProduction(Productions production) {
+	public void saveProduction(Production production) {
 
 		// get current hibernate session
 		Session currentSession = sessionFactory.getCurrentSession();
@@ -45,13 +45,13 @@ public class ProductionDAOImpl implements ProductionDAO {
 	}
 
 	@Override
-	public Productions getProduction(int theId) {
+	public Production getProduction(int theId) {
 
 		// get the current hibernate session
 		Session currentSession = sessionFactory.getCurrentSession();
 		
 		// now retrieve/read from database using the primary key
-		Productions production = currentSession.get(Productions.class, theId);
+		Production production = currentSession.get(Production.class, theId);
 		
 		return production;
 	}
