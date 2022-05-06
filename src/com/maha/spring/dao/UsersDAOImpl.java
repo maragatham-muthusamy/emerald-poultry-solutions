@@ -25,7 +25,7 @@ public class UsersDAOImpl implements UsersDAO {
 				
 		// create a query  ... sort by last name
 		Query<User> theQuery = 
-				currentSession.createQuery("from Users order by lastName",
+				currentSession.createQuery("from User order by lastName",
 											User.class);
 		
 		// execute query and get result list
