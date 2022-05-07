@@ -3,6 +3,7 @@ package com.maha.spring.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.maha.spring.entity.Production;
+import com.maha.spring.security.EepsUserDetails;
 import com.maha.spring.service.ProductionRepository;
 
 @Controller
@@ -48,15 +50,23 @@ public class ProductionController {
 	@PostMapping("/save")
 	public String save(@ModelAttribute("addupd") Production production) {
 
-		// save the user using our service
-		production.setUserId(1);
-		productionRepo.save(production);	
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
-		return "redirect:/production/list";
+		if (principal instanceof EepsUserDetails) {
+		  Long id = ((EepsUserDetails)principal).getId();
+			// save the record using our service
+			production.setUserId(id);
+			productionRepo.save(production);
+			
+			return "redirect:/production/list";
+		}
+
+		// this shouldn't happen normally
+		return "/";
 	}
 	
 	@GetMapping("/update")
-	public String update(@RequestParam("prodid") Long theId, Model theModel) {
+	public String update(@RequestParam("prodId") Long theId, Model theModel) {
 		// get the user from our service
 		Production production = productionRepo.findById(theId).orElse(new Production());
 

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org">
+<head th:replace="includes/header :: header">
+</head>
+<body>
+	<div th:replace="includes/menu :: menubar"></div>
+	<div class="contactuscontainer">
+		<form th:action="@{contactus}" th:object="${contactus}" method="post">
+			<input hidden="true" type="text" th:field="*{id}" readonly required>
+			<div class="input-group">
+				<label>Fullname</label>
+				<input type="text" th:field="*{fullName}" placeholder="Enter your name" id="contact-name" onkeyup="validateName()" required>
+				<span id="name-error"></span>
+			</div>
+
+			<div class="input-group">
+				<label>Phone</label>
+				<input type="tel" th:field="*{phone}" placeholder="123 456 7890" id="contact-phone" onkeyup="validatePhone()" required>
+				<span id="phone-error"></span>
+			</div>
+
+			<div class="input-group">
+				<label>E-Mail</label>
+				<input type="email" th:field="*{email}" placeholder="Enter your Email" id="contact-email" onkeyup="validateEmail()" required>
+				<span id="email-error"></span>
+			</div>
+
+			<div class="input-group">
+				<label>Your Message</label>
+				<textarea rows="5" th:field="*{message}" placeholder="Enter your Meassage" id="contact-message" onkeyup="validateMessage()"></textarea>
+				<div class="message" id="message-error"></div>
+			</div>
+
+			<input class="button" type="submit" value="Submit" onclick="return validateForm()" />
+			<span id="submit-error"></span>
+			<span id="submit-response" th:text="${result}"></span>
+		</form>
+	</div>
+	<div th:replace="includes/footer :: footer"></div>
+</body>
+</html>
+
+
+
+

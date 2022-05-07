@@ -20,10 +20,10 @@ public class Production {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id")
-	private int id;
+	private Long id;
 	
 	@Column(name="userid")
-	private int userId;
+	private Long userId;
 	
 	@Column(name="item")
 	private String item;
@@ -39,19 +39,19 @@ public class Production {
 	@DateTimeFormat(pattern = "MM/dd/yyyy")
 	private Date date;
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
-	public int getUserId() {
+	public Long getUserId() {
 		return userId;
 	}
 
-	public void setUserId(int userId) {
+	public void setUserId(Long userId) {
 		this.userId = userId;
 	}
 
@@ -85,6 +85,15 @@ public class Production {
 
 	public void setDate(Date date) {
 		this.date = date;
+	}
+	
+	public void setAllData(Production prod) {
+		setId(prod.getId());
+		setUserId(prod.getUserId());
+		setItem(prod.getItem());
+		setPrice(prod.getPrice());
+		setQuantity(prod.getQuantity());
+		setDate(prod.getDate());
 	}
 
 }

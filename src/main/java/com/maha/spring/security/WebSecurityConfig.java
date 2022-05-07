@@ -1,12 +1,5 @@
 package com.maha.spring.security;
 
-import java.io.IOException;
-
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.sql.DataSource;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -21,12 +14,13 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-	@Autowired
-	private DataSource dataSource;
-	
+
+    @Autowired
+    private LoginSuccessHandler loginSuccessHandler;
+    
 	@Bean
 	public UserDetailsService userDetailsService() {
-		return new CustomUserDetailsService();
+		return new EepsUserDetailsService();
 	}
 	
 	@Bean
@@ -54,17 +48,22 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			.antMatchers("/", "/home", "/contactus", "/aboutus", 
 						 "/css/**", "/js/**", "/images/**", 
 						 "/signup").permitAll()
+			.antMatchers("/user/list").hasAnyAuthority("Admin")
+			.antMatchers("/production/list").hasAnyAuthority("Admin", "User")
 			.anyRequest().authenticated()
 			.and()
 			.formLogin()
 				.loginPage("/login")
 				.defaultSuccessUrl("/user/list", true)
+				.successHandler(loginSuccessHandler)
 				.permitAll()
 			.and()
 			.logout()
 				.logoutSuccessUrl("/")
 				.invalidateHttpSession(true)
-				.permitAll();
+				.permitAll()
+			.and()
+			.exceptionHandling().accessDeniedPage("/403");
 	}
 	
 	

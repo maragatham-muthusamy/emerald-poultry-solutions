@@ -1,10 +1,14 @@
 package com.maha.spring.entity;
 
 
-import java.util.Collection;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -40,14 +44,12 @@ public class User {
 	@Column(name="password")
 	private String password;
 	
-	@ManyToMany 
+	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable( 
         name = "users_roles", 
-        joinColumns = @JoinColumn(
-          name = "user_id", referencedColumnName = "id"), 
-        inverseJoinColumns = @JoinColumn(
-          name = "role_id", referencedColumnName = "id")) 
-    private Collection<Role> roles;
+        joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"), 
+        inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id")) 
+    private Set<Role> roles = new HashSet<>();
 	
 	public User() {
 
@@ -109,6 +111,25 @@ public class User {
 		this.userName = userName;
 	}
 
+	public Set<Role> getRoles() {
+		return roles;
+	}
+
+	public void setUsername(Set<Role> roles) {
+		this.roles = roles;
+	}
+	
+    public boolean hasRole(String roleName) {
+        Iterator<Role> iterator = this.roles.iterator();
+        while (iterator.hasNext()) {
+            Role role = iterator.next();
+            if (role.getRole().equals(roleName)) {
+                return true;
+            }
+        }
+         
+        return false;
+    }
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + "phone" + phone + "]";

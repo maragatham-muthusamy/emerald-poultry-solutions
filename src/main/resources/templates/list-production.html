@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="includes/header :: header">
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+<!-- script th:inline="text/javascript">
+		window.onload = function() {
+		var dps = [[], []];
+		var chart = new CanvasJS.Chart("chartContainer", {
+			exportEnabled: true,
+			animationEnabled: true,
+			title: {
+				text: "Revenue"
+			},
+			subtitles: [{
+				text: "Click Legend to Hide or Unhide Data Series"
+			}],
+			axisX: {
+				title: "Date"
+			},
+			axisY: {
+				title: "Revenue",
+				prefix: "$"
+			},
+			toolTip: {
+				shared: true
+			},
+			legend: {
+				cursor: "pointer",
+				verticalAlign: "top",
+				itemclick: toggleDataSeries
+			},
+			data: [{
+				type: "column",
+				name: "Egg Income",
+				showInLegend: true,
+				yValueFormatString: "$#,##0",
+				dataPoints: dps[0]
+			},
+			{
+				type: "column",
+				name: "Feed Expense",
+				showInLegend: true,
+				yValueFormatString: "$#,##0",
+				dataPoints: dps[1]
+			}]
+		});
+		 
+		var yValue;
+		var label;
+
+		for(production in [[${productions}]]) {
+			yValue = parseFloat(production.price);
+			label = production.date;
+			dps[parseInt(production.itemId)].push({
+				label : label,
+				y : yValue,
+			});
+		}
+
+		chart.render();
+
+		function toggleDataSeries(e) {
+			if (typeof (e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
+				e.dataSeries.visible = false;
+			} else {
+				e.dataSeries.visible = true;
+			}
+			e.chart.render();
+		}
+		}
+	</script -->
+</head>
+<body>
+	<div th:replace="includes/menu :: menubar"></div>
+	<div class="user-wrapper">
+		<div class="left"></div>
+		<div class="middle">
+			<div class="user-header">
+				<h2>Production Details</h2>
+			</div>
+		</div>
+		<div class="right"></div>
+	</div>
+	<div class="listproductioncontainer">
+		<div class="content">
+			<div class="left"></div>
+
+			<div class="middle">
+				<table>
+					<tr>
+						<th>Item</th>
+						<th>Quantity</th>
+						<th>Price</th>
+						<th>Date</th>
+						<th>Action</th>
+					</tr>
+
+					<!-- loop over and print production details-->
+						<tr th:each="production: ${productions}">
+							<td th:text="${production.item}"/>
+							<td th:text="${production.quantity}"/>
+							<td th:text="${production.Price}"/>
+							<td th:text="${production.date}"/>
+
+							<td>
+								<!-- display the update link --> <a th:href="@{/production/update?prodId={id}(id=${production.id})}">Update</a>
+								| <a th:href="@{/production/delete?prodId={id}(id=${production.id})}"
+								onclick="if (!(confirm('Are you sure you want to delete this record?'))) return false">Delete</a>
+							</td>
+						</tr>
+				</table>
+			</div>
+			<div class="right"></div>
+		</div>
+		<br> <br>
+		<div class="content">
+			<div class="left"></div>
+			<input type="button" value="Add Record"
+				onclick="window.location.href='add'; return false;"
+				class="addupd-button" />
+			<div class="right"></div>
+		</div>
+		<div class="content">
+			<div class="left"></div>
+			<div id="chartContainer" style="height: 370px; width: 100%;"></div>
+			<div class="right"></div>
+		</div>
+	</div>
+	<div th:replace="includes/footer :: footer"></div>
+</body>
+</html>
+
+

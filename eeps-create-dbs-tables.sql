@@ -21,6 +21,15 @@ CREATE TABLE IF NOT EXISTS `Roles` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB;
 
+CREATE TABLE `users_roles` (
+  `user_id` BIGINT NOT NULL,
+  `role_id` BIGINT NOT NULL,
+  KEY `user_fk_idx` (`user_id`),
+  KEY `role_fk_idx` (`role_id`),
+  CONSTRAINT `role_fk` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`),
+  CONSTRAINT `user_fk` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
+);
+
 CREATE TABLE IF NOT EXISTS `Production` (
   `id` int NOT NULL AUTO_INCREMENT,
   `userid` BIGINT NOT NULL,
@@ -33,9 +42,8 @@ CREATE TABLE IF NOT EXISTS `Production` (
 ) ENGINE=InnoDB;
 
 CREATE TABLE IF NOT EXISTS `ContactUs` (
-  `id` int NOT NULL,
-  `firstname` varchar(50) NOT NULL,
-  `lastname` varchar(50) NOT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
+  `fullname` varchar(50) NOT NULL,
   `email` varchar(100) NOT NULL,
   `phone` varchar(15) NOT NULL,
   `message` varchar(500) NOT NULL,

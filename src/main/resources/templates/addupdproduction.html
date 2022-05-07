@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org">
+<head th:replace="includes/header :: header">
+</head>
+<body>
+	<div th:replace="includes/menu :: menubar"></div>
+	<div class="user-wrapper">
+		<div class="left"></div>
+		<div class="middle">
+			<div class="user-header">
+				<h2>Production Details</h2>
+			</div>
+		</div>
+		<div class="right"></div>
+	</div>
+
+	<div class="addupdcontainer">
+		<div class="content">
+			<div class="left"></div>
+			<div class="middle">
+				<form th:action="@{/production/save}" th:object="${addupd}" method="POST">
+					<table>
+						<tbody>
+							<tr hidden="true">
+								<td><label>Id</label></td>
+								<td><input th:field="*{id}"  placeholder="id" name="id" id="id" readonly required/></td>
+							</tr>
+							<tr>
+								<td><label>Item:</label></td>
+								<td><input th:field="*{item}"  placeholder="Item name" name="itemname" id="itemname" required/></td>
+							</tr>
+
+							<tr>
+								<td><label>Price:</label></td>
+								<td><input th:field="*{price}"  placeholder="Price" name="price" id="price" required/></td>
+							</tr>
+
+							<tr>
+								<td><label>Quantity:</label></td>
+								<td><input th:field="*{quantity}" placeholder="Quantity" required name="quantity" id="quantity"/></td>
+							</tr>
+
+							<tr>
+								<td><label>Date:</label></td>
+								<td><input th:field="*{date}"  placeholder="MM/DD/YYY" required name="date" id="date"/></td>
+							</tr>
+
+							<tr>
+								<td><label></label></td>
+								<td><input type="submit" value="Save" class="save"/>
+									&nbsp;&nbsp;&nbsp; <a href="/production/list">Back to List</a></td>
+							</tr>
+						</tbody>
+					</table>
+				</form>
+			</div>
+			<div class="right"></div>
+		</div>
+	</div>
+	<div th:replace="includes/footer :: footer"></div>
+</body>
+</html>
+
+
