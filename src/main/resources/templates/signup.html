@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="includes/header :: header">
+</head>
+<body>
+	<div th:replace="includes/menu :: menubar"></div>
+	<div class="contactuscontainer">
+		<form th:action="@{/signup}" th:object="${user}" method="post">
+			<div class="input-group">
+				<input type="text" th:field="*{firstName}" placeholder="Firstname" id="firstname" name="firstname" required maxlength="50" />
+				<span id="name-error"></span>
+			</div>
+
+			<div class="input-group">
+				<input type="text" th:field="*{lastName}" placeholder="Lastname" id="lastname" name="lastname" required maxlength="50" />
+				<span id="name-error"></span>
+			</div>
+
+			<div class="input-group">
+				<input type="tel" th:field="*{phone}" placeholder="Phone" id="phone" name="phone" required maxlength="10" />
+				<span id="name-error"></span>
+			</div>
+
+			<div class="input-group">
+				<input type="email" th:field="*{email}" placeholder="E-mail" id="email" name="email" required minlength="6" maxlength="50" />
+				<span id="email-error"></span>
+			</div>
+
+			<br>
+
+			<div class="input-group">
+				<input type="text" th:field="*{username}" placeholder="Username" id="username" name="username" required minlength="3" maxlength="20">
+				<span id="email-error"></span>
+			</div>
+
+			<div class="input-group">
+				<input type="password" th:field="*{password}" placeholder="New password" id="password" name="password" required minlength="5" maxlength="50">
+				<div id="password-error"></div>
+			</div>
+
+			<div class="input-group">
+				<input type="password" placeholder="Confirm New password" id="confirmpassword" name="confirmpassword" required minlength="5" maxlength="50">
+				<div id="cpassword-error"></div>
+			</div>
+
+			<input class="button" type="submit" name="Register" onclick="return validatePassword();"/>
+			<span id="submit-error"></span>
+		</form>
+	</div>
+	<div th:replace="includes/footer :: footer"></div>
+</body>
+</html>

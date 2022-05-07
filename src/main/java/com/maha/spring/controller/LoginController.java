@@ -3,6 +3,7 @@ package com.maha.spring.controller;
 import java.util.Locale;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
@@ -30,23 +31,18 @@ public class LoginController {
 	}
 
 	@GetMapping(value = "/signup")
-	public String signup(@Validated UserForm user, Model model) {
-		// model.addAttribute("userName", user.getUserName());
+	public String signup(Model model) {
+		model.addAttribute("user", new User());
 		return "signup";
 	}
 
-	@PostMapping(value = "/signup_submit")
-	public String signuppost(@ModelAttribute("userForm")UserForm userform, Model model) {
-		User oneuser = new User();
-		
-		oneuser.setFirstName(userform.getFirstName());
-		oneuser.setLastName(userform.getLastName());
-		oneuser.setEmail(userform.getEmail());
-		oneuser.setPhone(userform.getPhone());
-		oneuser.setUsername(userform.getUsername());
-		oneuser.setPassword(userform.getPassword());
+	@PostMapping(value = "/signup")
+	public String signuppost(User user) {
+		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		String encodedPassword = passwordEncoder.encode(user.getPassword());
+		user.setPassword(encodedPassword);
 
-		userRepo.save(oneuser);
+		userRepo.save(user);
 		
 		// model.addAttribute("userName", user.getUserName());
 		return "home";
