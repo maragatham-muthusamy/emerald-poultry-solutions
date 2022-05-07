@@ -31,14 +31,10 @@ body {
 	display: flex;
 }
 
-.menu>li, .login-menu>li {
-	list-style: none;
-	padding: 35px;
-}
-
-.menu>li>a, .login-menu>li>a {
+.menu a, .login-menu a {
 	text-decoration: none;
 	color: #f7a60f;
+	padding: 35px;
 }
 
 /*

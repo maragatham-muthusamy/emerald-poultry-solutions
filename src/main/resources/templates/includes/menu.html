@@ -8,16 +8,19 @@
 			<div class="logo">
 				<img th:src="@{/images/logo.png}">
 			</div>
-			<ul class="menu">
-				<li><a href="/">Home</a></li>
-				<li><a href="/aboutus">About</a></li>
-				<li><a href="/contactus">Contact</a></li>
-			</ul>
+			<div class="menu">
+				<a href="/">Home</a>
+				<a href="/aboutus">About</a>
+				<a href="/contactus">Contact</a>
+			</div>
 
 			<div class="login-menu">
 				<div sec:authorize="isAuthenticated()">
-				    Welcome, <span sec:authentication="name">FullName</span>     
-					<a href="/logout">Logout</a>
+				    <a href="#">Welcome, <span sec:authentication="name">FullName</span></a>     
+				    <a href="javascript: document.logoutForm.submit()" class="dropdown-toggle">Logout</a>
+				    <form name="logoutForm" th:action="@{/logout}" method="post" th:hidden="true">
+	    				<a href="/logout">Logout</a>
+				    </form>
 				</div>
 				<div sec:authorize="isAnonymous()">
 					<a href="/signup">Sign up</a>

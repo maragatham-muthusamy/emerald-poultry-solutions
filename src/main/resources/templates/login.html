@@ -6,14 +6,21 @@
 	<div th:replace="includes/menu :: menubar"></div>
 	<div class="logincontainer">
 		<div class="loginform">
-			<form th:action="login" method="post" class="login-form">
-				<input type="text" placeholder="Username" /> <input type="password"
-					placeholder="Password" />
+			<form name='f' th:action="@{/login}" method="post" class="login-form">
+				<input type="text" placeholder="Username" name="username" id="username"/>
+				<input type="password" placeholder="Password" name="password" id="password"/>
 				<button>login</button>
 				<p class="message">
 					Not registered? <a href="/signup">Create an account</a>
 				</p>
-			</form>
+				<br>
+				<div th:if="${param.error}" style="text-align: center; color: #FF0000">    
+                    Invalid credentials
+                </div>
+                <div th:if="${param.logout}"  style="text-align: center; color: #0000FF"> 
+                    You have successfully been logged out.
+                </div>
+           </form>
 		</div>
 	</div>
 	<div th:replace="includes/footer :: footer"></div>

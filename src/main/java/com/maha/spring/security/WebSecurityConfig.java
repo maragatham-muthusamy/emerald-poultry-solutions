@@ -1,5 +1,10 @@
 package com.maha.spring.security;
 
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,19 +47,22 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth.authenticationProvider(authenticationProvider());
 	}
-
+	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
-			.antMatchers("/user/list").authenticated()
-			.anyRequest().permitAll()
+			.antMatchers("/", "/home", "/contactus", "/aboutus", "/css/**", "/js/**", "/images/**").permitAll()
+			.anyRequest().authenticated()
 			.and()
 			.formLogin()
-				//.loginPage("/login")
-				.defaultSuccessUrl("/user/list")
+				.loginPage("/login")
+				.defaultSuccessUrl("/user/list", true)
 				.permitAll()
 			.and()
-			.logout().logoutSuccessUrl("/").permitAll();
+			.logout()
+				.logoutSuccessUrl("/")
+				.invalidateHttpSession(true)
+				.permitAll();
 	}
 	
 	
