@@ -37,7 +37,7 @@ public class ProductionController {
 
 			// add the users to the model
 			theModel.addAttribute("productions", productions);
-			return "list-production";
+			return "listproduction";
 		}
 		
 		// generally shouldn't happen

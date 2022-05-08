@@ -494,6 +494,7 @@ body {
 .listusercontainer table tr, .listproductioncontainer table tr {
 	border-top: 1px solid gray;
 	text-align: center;
+	font-weight: bold;
 }
 
 .listusercontainer table tr:nth-child(even), .listproductioncontainer table tr:nth-child(even) {

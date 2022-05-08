@@ -31,7 +31,7 @@ public class UsersController {
 		// add the users to the model
 		theModel.addAttribute("users", theUsers);
 		
-		return "list-users";
+		return "listusers";
 	}
 
 	@GetMapping("/add")

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="includes/header :: header">
+</head>
+<body>
+	<div th:replace="includes/menu :: menubar"></div>
+	<div class="listusercontainer">
+		<div class="user-wrapper">
+			<div class="middle" style="padding-left: 1%;">
+				<div class="user-header">
+					<h2>User List</h2>
+				</div>
+			</div>
+			<div class="right"></div>
+		</div>
+		<br>
+		<div class="content">
+			<div class="middle" style="padding-left: 1%;">
+				<table>
+					<tr>
+						<th>Fullname</th>
+						<th>E-Mail</th>
+						<th>Phone</th>
+						<th>Message</th>
+						<th>Action</th>
+					</tr>
+
+					<!-- loop over and print our users -->
+						<tr th:each="message: ${contactuslist}">
+							<td th:text="${message.fullName}"/>
+							<td th:text="${message.email}"/>
+							<td th:text="${message.phone}"/>
+							<td th:text="${message.message}"/>
+
+							<td>
+								<a th:href="@{/contactus/delete?id={id}(id=${message.id})}"
+								onclick="if (!(confirm('Are you sure you want to delete this record?'))) return false">Done</a>
+							</td>
+						</tr>
+				</table>
+			</div>
+			<div class="right"></div>
+		</div>
+		<br> <br>
+		<div class="content">
+			<div class="left"></div>
+			<div class="middle" style="padding-left: 1%; align-items: center;">
+				<input type="button" value="Add User" onclick="window.location.href='add'; return false;" class="addupd-button" />
+			</div>
+			<div class="right"></div>
+		</div>
+	</div>
+	<div th:replace="includes/footer :: footer"></div>
+</body>
+</html>
+

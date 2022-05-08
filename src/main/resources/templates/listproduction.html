@@ -1,10 +1,33 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="includes/header :: header">
-<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
-<!-- script th:inline="text/javascript">
+<head>
+	<title>Emerald Enterprise Management Solutions</title>
+	<link
+		href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+		rel="stylesheet">
+	<link rel="stylesheet" th:href="@{/css/style.css}">
+	<script th:src="@{/js/script.js}"></script>
+	<link rel="shortcut icon" href="#">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+	<script th:inline="javascript" type="text/javascript">
+		const formatDate = (date) => {
+			  let d = new Date(date);
+			  let month = (d.getMonth() + 1).toString();
+			  let day = d.getDate().toString();
+			  let year = d.getFullYear();
+			  if (month.length < 2) {
+			    month = '0' + month;
+			  }
+			  if (day.length < 2) {
+			    day = '0' + day;
+			  }
+			  return [month, day, year].join('/');
+			}
+	
 		window.onload = function() {
-		var dps = [[], []];
+		var dps = [ [ ], [ ] ];
 		var chart = new CanvasJS.Chart("chartContainer", {
 			exportEnabled: true,
 			animationEnabled: true,
@@ -48,15 +71,19 @@
 		var yValue;
 		var label;
 
-		for(production in [[${productions}]]) {
+		var list = [[${productions}]];
+
+		for (i = 0; i < list.length; i++) {
+			var production = list[i];
 			yValue = parseFloat(production.price);
-			label = production.date;
-			dps[parseInt(production.itemId)].push({
+			label = formatDate(production.date);
+			var id = (production.item == "Egg") ? 0 : 1;
+			dps[id].push({
 				label : label,
 				y : yValue,
 			});
 		}
-
+		
 		chart.render();
 
 		function toggleDataSeries(e) {
@@ -67,8 +94,8 @@
 			}
 			e.chart.render();
 		}
-		}
-	</script -->
+	}
+	</script>
 </head>
 <body>
 	<div th:replace="includes/menu :: menubar"></div>
@@ -120,7 +147,7 @@
 		</div>
 		<div class="content">
 			<div class="left"></div>
-			<div id="chartContainer" style="height: 370px; width: 100%;"></div>
+			<div id="chartContainer" style="height: 300px; width: 100%;"></div>
 			<div class="right"></div>
 		</div>
 	</div>

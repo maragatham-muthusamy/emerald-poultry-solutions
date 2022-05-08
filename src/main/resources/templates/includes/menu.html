@@ -18,12 +18,14 @@
 			    <form name="logoutForm" th:action="@{/logout}" method="post" th:hidden="true">
     				<a href="/logout">Logout</a>
 			    </form>
-				<div th:if="${#authorization.expression('isAuthenticated()') and #strings.contains(#authentication.principal.authorities,'Admin')}">          
-				    <a th:href="@{/user/list}">User list</a>
-				    <a href="javascript: document.logoutForm.submit()" class="dropdown-toggle">Logout</a>
-				</div>
-				<div th:if="${#authorization.expression('isAuthenticated()') and #strings.contains(#authentication.principal.authorities,'User')}">          
-				    <a th:href="@{/production/list}">Production List</a>
+				<div sec:authorize="isAuthenticated()">
+					<span th:if="${#authorization.expression('isAuthenticated()') and #strings.contains(#authentication.principal.authorities,'Admin')}">          
+					    <a th:href="@{/user/list}">User list</a>
+					    <a th:href="@{/contactus/list}">Messages</a>
+					</span>
+					<span th:if="${#authorization.expression('isAuthenticated()') and #strings.contains(#authentication.principal.authorities,'User')}">          
+					    <a th:href="@{/production/list}">Production List</a>
+					</span>
 				    <a href="javascript: document.logoutForm.submit()" class="dropdown-toggle">Logout</a>
 				</div>
 				<div sec:authorize="isAnonymous()">
