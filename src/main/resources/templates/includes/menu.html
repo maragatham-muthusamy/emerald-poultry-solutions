@@ -1,5 +1,5 @@
 <html xmlns:th="http://www.thymeleaf.org"
-	  xmlns:sec="http://www.thymeleaf.org">
+	  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
 </head>
 <body>
@@ -15,12 +15,16 @@
 			</div>
 
 			<div class="login-menu">
-				<div sec:authorize="isAuthenticated()">
-				    <a href="#">Welcome, <span sec:authentication="name">FullName</span></a>     
+			    <form name="logoutForm" th:action="@{/logout}" method="post" th:hidden="true">
+    				<a href="/logout">Logout</a>
+			    </form>
+				<div th:if="${#authorization.expression('isAuthenticated()') and #strings.contains(#authentication.principal.authorities,'Admin')}">          
+				    <a th:href="@{/user/list}">User list</a>
 				    <a href="javascript: document.logoutForm.submit()" class="dropdown-toggle">Logout</a>
-				    <form name="logoutForm" th:action="@{/logout}" method="post" th:hidden="true">
-	    				<a href="/logout">Logout</a>
-				    </form>
+				</div>
+				<div th:if="${#authorization.expression('isAuthenticated()') and #strings.contains(#authentication.principal.authorities,'User')}">          
+				    <a th:href="@{/production/list}">Production List</a>
+				    <a href="javascript: document.logoutForm.submit()" class="dropdown-toggle">Logout</a>
 				</div>
 				<div sec:authorize="isAnonymous()">
 					<a href="/signup">Sign up</a>
@@ -28,6 +32,13 @@
 				</div>
 			</div>
 		</nav>
+		<div class="welcomemessage"style="width: 100%; padding: 1px; display: flex;">
+			<div class="left"></div>
+			<div class="middle" sec:authorize="isAuthenticated()" style="color: #fff; margin-left: 30%; font-size: 1.6rem;">
+			    Welcome, <span sec:authentication="name">FullName</span>
+			</div>
+			<div class="right"></div>
+		</div>
 	</div>
 </body>
 </html>

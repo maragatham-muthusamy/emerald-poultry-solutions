@@ -72,20 +72,20 @@
 </head>
 <body>
 	<div th:replace="includes/menu :: menubar"></div>
-	<div class="user-wrapper">
-		<div class="left"></div>
-		<div class="middle">
-			<div class="user-header">
-				<h2>Production Details</h2>
-			</div>
-		</div>
-		<div class="right"></div>
-	</div>
 	<div class="listproductioncontainer">
+		<div class="prod-wrapper">
+			<div class="left"></div>
+			<div class="middle" style="padding-left: 1%;">
+				<div class="prod-header">
+					<h2>Production Details</h2>
+				</div>
+			</div>
+			<div class="right"></div>
+		</div>
+		<br>
 		<div class="content">
 			<div class="left"></div>
-
-			<div class="middle">
+			<div class="middle" style="padding-left: 1%;">
 				<table>
 					<tr>
 						<th>Item</th>
@@ -99,8 +99,8 @@
 						<tr th:each="production: ${productions}">
 							<td th:text="${production.item}"/>
 							<td th:text="${production.quantity}"/>
-							<td th:text="${production.Price}"/>
-							<td th:text="${production.date}"/>
+							<td th:text="${production.price}"/>
+							<td th:text="${#dates.format(production.date, 'MM/dd/yyyy')}"/>
 
 							<td>
 								<!-- display the update link --> <a th:href="@{/production/update?prodId={id}(id=${production.id})}">Update</a>
@@ -115,9 +115,7 @@
 		<br> <br>
 		<div class="content">
 			<div class="left"></div>
-			<input type="button" value="Add Record"
-				onclick="window.location.href='add'; return false;"
-				class="addupd-button" />
+			<input type="button" value="Add Record" onclick="window.location.href='add'; return false;" class="addupd-button" />
 			<div class="right"></div>
 		</div>
 		<div class="content">

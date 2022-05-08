@@ -4,18 +4,16 @@
 </head>
 <body>
 	<div th:replace="includes/menu :: menubar"></div>
-	<div class="user-wrapper">
-		<div class="left"></div>
-		<div class="middle">
-			<div class="user-header">
-				<h2>User Manager</h2>
+	<div class="useraddupdcontainer">
+		<div class="user-wrapper" style="padding-left: 1%;">
+			<div class="middle">
+				<div class="user-header">
+					<h2>User detail</h2>
+				</div>
 			</div>
+			<div class="right"></div>
 		</div>
-		<div class="right"></div>
-	</div>
-	<div class="addupdcontainer">
-		<div class="content">
-			<div class="left"></div>
+		<div class="content" style="padding-left: 1%;">
 			<div class="middle">
 				<form th:action="@{/user/save}" th:object="${addupd}">
 					<!-- need to associate this data with user id -->
@@ -52,7 +50,7 @@
 								</tr>
 								<tr>
 									<td><label>Confirm Password:</label></td>
-									<td><input type="password" id="confirmpassword" placeholder="Confirm password" name="confirmpassword" id="confirmpassword" required/></td>
+									<td><input type="password" id="confirmpassword" placeholder="Confirm password" name="confirmpassword" required/></td>
 								</tr>
 							<tr>
 								<td><label></label></td>

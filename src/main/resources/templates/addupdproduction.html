@@ -4,20 +4,19 @@
 </head>
 <body>
 	<div th:replace="includes/menu :: menubar"></div>
-	<div class="user-wrapper">
-		<div class="left"></div>
-		<div class="middle">
-			<div class="user-header">
-				<h2>Production Details</h2>
-			</div>
-		</div>
-		<div class="right"></div>
-	</div>
-
-	<div class="addupdcontainer">
-		<div class="content">
+	<div class="prodaddupdcontainer">
+		<div class="prod-wrapper">
 			<div class="left"></div>
 			<div class="middle">
+				<div class="prod-header">
+					<h2>Production Details</h2>
+				</div>
+			</div>
+			<div class="right"></div>
+		</div>
+		<div class="content">
+			<div class="left"></div>
+			<div class="middle" style="padding-left: -5%;">
 				<form th:action="@{/production/save}" th:object="${addupd}" method="POST">
 					<table>
 						<tbody>

@@ -27,13 +27,21 @@ public class ProductionController {
 	@GetMapping("/list")
 	public String listUsers(Model theModel) {
 
-		// get users from the service
-		List<Production> productions = productionRepo.findAll();
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
-		// add the users to the model
-		theModel.addAttribute("productions", productions);
+		if (principal instanceof EepsUserDetails) {
+			Long id = ((EepsUserDetails)principal).getId();
+
+			// get users from the service
+		  	List<Production> productions = productionRepo.findAllById(id);
+
+			// add the users to the model
+			theModel.addAttribute("productions", productions);
+			return "list-production";
+		}
 		
-		return "list-production";
+		// generally shouldn't happen
+		return "home";
 	}
 	
 	@GetMapping("/add")
